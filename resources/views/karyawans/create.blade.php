@@ -19,9 +19,9 @@
                 </div>
 
                 <div class="mb-4">
-                    <label class="block text-gray-700">Jabatan</label>
+                    <label class="block text-gray-700">Divisi</label>
                     <select name="jabatan" class="w-full px-3 py-2 border rounded" required>
-                        <option value="">-- Pilih Jabatan --</option>
+                        <option value="">-- Pilih Divisi --</option>
                         <option value="PIC of CS">PIC of CS</option>
                         <option value="Product Trainer">Product Trainer</option>
                         <option value="QA of CS">QA of CS</option>

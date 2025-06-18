@@ -18,8 +18,20 @@ class UserController extends Controller
 
    public function create()
 {
+    $availableKaryawans = Karyawan::doesntHave('user')->get();
     $leaders = User::where('role', 'leader')->get();
-    return view('users.create', compact('leaders'));
+
+    $leaderMapping = [];
+    foreach ($availableKaryawans as $karyawan) {
+        $leader = User::where('role', 'leader')
+                    ->where('name', 'LIKE', '%' . $karyawan->jabatan . '%')
+                    ->first();
+        if ($leader) {
+            $leaderMapping[$karyawan->jabatan] = $leader->id;
+        }
+    }
+
+    return view('users.create', compact('availableKaryawans', 'leaders', 'leaderMapping'));
 }
 
 public function edit(User $user)
@@ -66,18 +78,13 @@ public function store(Request $request)
         'password' => Hash::make($request->password),
         'role'     => $request->role,
     ]);
-
-    // Cari data karyawan berdasarkan nama
-    if ($request->role === 'karyawan' && $request->leader_id) {
-        $karyawan = Karyawan::where('nama', $user->name)->first();
-        if ($karyawan) {
-            DB::table('leader_karyawans')->insert([
-                'leader_user_id' => $request->leader_id,
-                'karyawan_id' => $karyawan->id,
-                'created_at' => now(),
-                'updated_at' => now(),
-            ]);
-        }
+    if ($request->role === 'karyawan' && $request->karyawan_id && $request->leader_id) {
+        DB::table('leader_karyawans')->insert([
+            'leader_user_id' => $request->leader_id,
+            'karyawan_id' => $request->karyawan_id,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
     }
 
     return redirect()->route('users.index')->with('success', 'User berhasil ditambahkan.');

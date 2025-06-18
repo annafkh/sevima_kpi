@@ -29,5 +29,9 @@ class Karyawan extends Model
 {
     return $this->belongsToMany(User::class, 'leader_karyawans', 'karyawan_id', 'leader_user_id');
 }
+public function user()
+{
+    return $this->hasOne(User::class, 'name', 'nama');
+}
 
 }

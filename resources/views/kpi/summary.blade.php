@@ -2,7 +2,9 @@
     <x-slot name="header">
         <h2 class="text-2xl font-bold leading-tight text-center text-gray-800">📋 Ringkasan KPI Karyawan</h2>
     </x-slot>
-    
+    <button onclick="window.print()" class="px-4 py-2 text-black bg-blue-600 rounded-md hover:bg-blue-700 no-print">
+        Cetak Laporan
+    </button>
    
 
 
@@ -96,33 +98,48 @@
     </div>
 
     {{-- Script Chart.js --}}
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2"></script>
     @push('scripts')
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
         <script>
             const ctx = document.getElementById('kpiChart').getContext('2d');
             const kpiChart = new Chart(ctx, {
-                type: 'line', // Ubah dari 'bar' ke 'line'
+                type: 'line',
                 data: {
                     labels: {!! json_encode($labels) !!},
                     datasets: [{
                         label: 'Total Nilai KPI',
                         data: {!! json_encode($data) !!},
-                        backgroundColor: 'rgba(59, 130, 246, 0.2)', // Set warna transparan untuk area bawah garis
-                        borderColor: 'rgba(59, 130, 246, 1)', // Warna garis
-                        borderWidth: 2, // Lebar garis
-                        pointBackgroundColor: 'rgba(59, 130, 246, 1)', // Warna titik data
-                        pointRadius: 5, // Ukuran titik
+                        backgroundColor: 'rgba(59, 130, 246, 0.2)',
+                        borderColor: 'rgba(59, 130, 246, 1)',
+                        borderWidth: 2,
+                        pointBackgroundColor: 'rgba(59, 130, 246, 1)',
+                        pointRadius: 5,
                     }]
                 },
                 options: {
                     responsive: true,
+                    plugins: {
+                        datalabels: {
+                            anchor: 'end',
+                            
+                            align: 'top',
+                            color: '#000',
+                            font: {
+                                weight: 'bold',
+                                size: 10
+                            },
+                            formatter: value => value.toFixed(2)
+                        }
+                    },
                     scales: {
                         y: {
                             beginAtZero: true
                         }
                     },
-                    tension: 0.3 // Menambahkan kelengkungan pada garis
-                }
+                    tension: 0.3
+                },
+                plugins: [ChartDataLabels]
             });
         </script>
     @endpush

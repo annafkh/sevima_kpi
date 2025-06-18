@@ -72,7 +72,7 @@ class User extends Authenticatable
 }
 public function karyawan()
 {
-    return $this->hasOne(Karyawan::class, 'nama', 'name','id', 'id');
+    return $this->hasOne(Karyawan::class, 'nama', 'name','id', 'id', 'user_id');
 }
 public function bawahan()
 {
