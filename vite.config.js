@@ -13,3 +13,4 @@ export default defineConfig({
         }),
     ],
 });
+//npx laravel2doc//

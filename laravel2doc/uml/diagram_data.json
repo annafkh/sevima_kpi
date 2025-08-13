@@ -1,0 +1,548 @@
+{
+  "models": [
+    {
+      "name": "Karyawan",
+      "properties": [
+        {
+          "name": "nama",
+          "type": "fillable",
+          "dataType": ""
+        },
+        {
+          "name": "ktp",
+          "type": "fillable",
+          "dataType": ""
+        },
+        {
+          "name": "jabatan",
+          "type": "fillable",
+          "dataType": ""
+        },
+        {
+          "name": "nohp",
+          "type": "fillable",
+          "dataType": ""
+        },
+        {
+          "name": "jk",
+          "type": "fillable",
+          "dataType": ""
+        }
+      ],
+      "methods": [],
+      "namespace": "App\\Models",
+      "tableName": "karyawans"
+    },
+    {
+      "name": "KpiCategory",
+      "properties": [
+        {
+          "name": "nama",
+          "type": "fillable",
+          "dataType": ""
+        },
+        {
+          "name": "deskripsi",
+          "type": "fillable",
+          "dataType": ""
+        }
+      ],
+      "methods": [],
+      "namespace": "App\\Models"
+    },
+    {
+      "name": "KpiIndicator",
+      "properties": [
+        {
+          "name": "nama",
+          "type": "fillable",
+          "dataType": ""
+        },
+        {
+          "name": "bobot",
+          "type": "fillable",
+          "dataType": ""
+        },
+        {
+          "name": "target",
+          "type": "fillable",
+          "dataType": ""
+        },
+        {
+          "name": "kpi_category_id",
+          "type": "fillable",
+          "dataType": ""
+        },
+        {
+          "name": "deskripsi",
+          "type": "fillable",
+          "dataType": ""
+        },
+        {
+          "name": "status",
+          "type": "fillable",
+          "dataType": ""
+        }
+      ],
+      "methods": [],
+      "namespace": "App\\Models"
+    },
+    {
+      "name": "KpiScore",
+      "properties": [
+        {
+          "name": "karyawan_id",
+          "type": "fillable",
+          "dataType": ""
+        },
+        {
+          "name": "kpi_indicator_id",
+          "type": "fillable",
+          "dataType": ""
+        },
+        {
+          "name": "nilai",
+          "type": "fillable",
+          "dataType": ""
+        },
+        {
+          "name": "tanggal",
+          "type": "fillable",
+          "dataType": ""
+        }
+      ],
+      "methods": [],
+      "namespace": "App\\Models"
+    },
+    {
+      "name": "KpiSummary",
+      "properties": [
+        {
+          "name": "karyawan_id",
+          "type": "fillable",
+          "dataType": ""
+        },
+        {
+          "name": "total_nilai",
+          "type": "fillable",
+          "dataType": ""
+        }
+      ],
+      "methods": [],
+      "namespace": "App\\Models",
+      "tableName": "kpi_summaries"
+    },
+    {
+      "name": "LeaderKaryawan",
+      "properties": [],
+      "methods": [],
+      "namespace": "App\\Models"
+    },
+    {
+      "name": "User",
+      "properties": [
+        {
+          "name": "name",
+          "type": "fillable",
+          "dataType": ""
+        },
+        {
+          "name": "email",
+          "type": "fillable",
+          "dataType": ""
+        },
+        {
+          "name": "password",
+          "type": "fillable",
+          "dataType": ""
+        },
+        {
+          "name": "role",
+          "type": "fillable",
+          "dataType": ""
+        }
+      ],
+      "methods": [],
+      "namespace": "App\\Models"
+    }
+  ],
+  "controllers": [
+    {
+      "name": "AdminUserController",
+      "methods": [
+        {
+          "name": "create",
+          "params": ""
+        },
+        {
+          "name": "store",
+          "params": "Request $request"
+        }
+      ],
+      "namespace": "App\\Http\\Controllers"
+    },
+    {
+      "name": "ChartController",
+      "methods": [
+        {
+          "name": "index",
+          "params": ""
+        },
+        {
+          "name": "getChartData",
+          "params": "Request $request"
+        },
+        {
+          "name": "chartDetail",
+          "params": "$tahun, $semester"
+        },
+        {
+          "name": "semesterForLeader",
+          "params": ""
+        },
+        {
+          "name": "detailForLeader",
+          "params": "$tahun, $semester"
+        }
+      ],
+      "namespace": "App\\Http\\Controllers"
+    },
+    {
+      "name": "Controller",
+      "methods": [],
+      "namespace": "App\\Http\\Controllers"
+    },
+    {
+      "name": "DashboardController",
+      "methods": [
+        {
+          "name": "index",
+          "params": "Request $request"
+        }
+      ],
+      "namespace": "App\\Http\\Controllers"
+    },
+    {
+      "name": "DashboardKaryawanController",
+      "methods": [
+        {
+          "name": "index",
+          "params": ""
+        }
+      ],
+      "namespace": "App\\Http\\Controllers"
+    },
+    {
+      "name": "EvaluationController",
+      "methods": [
+        {
+          "name": "index",
+          "params": ""
+        }
+      ],
+      "namespace": "App\\Http\\Controllers"
+    },
+    {
+      "name": "KaryawanController",
+      "methods": [
+        {
+          "name": "index",
+          "params": ""
+        },
+        {
+          "name": "create",
+          "params": ""
+        },
+        {
+          "name": "store",
+          "params": "Request $request"
+        },
+        {
+          "name": "show",
+          "params": "string $id"
+        },
+        {
+          "name": "edit",
+          "params": "Karyawan $karyawan"
+        },
+        {
+          "name": "update",
+          "params": "Request $request, Karyawan $karyawan"
+        },
+        {
+          "name": "destroy",
+          "params": "Karyawan $karyawan"
+        }
+      ],
+      "namespace": "App\\Http\\Controllers"
+    },
+    {
+      "name": "KpiCategoryController",
+      "methods": [
+        {
+          "name": "index",
+          "params": ""
+        },
+        {
+          "name": "create",
+          "params": ""
+        },
+        {
+          "name": "store",
+          "params": "Request $request"
+        },
+        {
+          "name": "edit",
+          "params": "$id"
+        },
+        {
+          "name": "update",
+          "params": "Request $request, $id"
+        },
+        {
+          "name": "destroy",
+          "params": "KpiCategory $kpiCategory"
+        }
+      ],
+      "namespace": "App\\Http\\Controllers"
+    },
+    {
+      "name": "KpiIndicatorController",
+      "methods": [
+        {
+          "name": "index",
+          "params": ""
+        },
+        {
+          "name": "create",
+          "params": ""
+        },
+        {
+          "name": "store",
+          "params": "Request $request"
+        },
+        {
+          "name": "edit",
+          "params": "$id"
+        },
+        {
+          "name": "update",
+          "params": "Request $request, $id"
+        },
+        {
+          "name": "destroy",
+          "params": "KpiIndicator $kpi_indicator"
+        }
+      ],
+      "namespace": "App\\Http\\Controllers"
+    },
+    {
+      "name": "KpiScoreController",
+      "methods": [
+        {
+          "name": "index",
+          "params": ""
+        },
+        {
+          "name": "visualisasi",
+          "params": ""
+        },
+        {
+          "name": "create",
+          "params": ""
+        },
+        {
+          "name": "create",
+          "params": "Request $request"
+        },
+        {
+          "name": "edit",
+          "params": "$id"
+        },
+        {
+          "name": "store",
+          "params": "Request $request"
+        },
+        {
+          "name": "store",
+          "params": "Request $request"
+        },
+        {
+          "name": "show",
+          "params": "string $id"
+        },
+        {
+          "name": "update",
+          "params": "Request $request, $id"
+        },
+        {
+          "name": "destroy",
+          "params": "$id"
+        }
+      ],
+      "namespace": "App\\Http\\Controllers"
+    },
+    {
+      "name": "KpiSummaryController",
+      "methods": [
+        {
+          "name": "index",
+          "params": "Request $request"
+        },
+        {
+          "name": "show",
+          "params": "Request $request, $karyawanId"
+        },
+        {
+          "name": "summary",
+          "params": "Request $request"
+        },
+        {
+          "name": "destroy",
+          "params": "$id"
+        },
+        {
+          "name": "getSemesterSummary",
+          "params": "Request $request"
+        },
+        {
+          "name": "getSemesterDetail",
+          "params": "$tahun, $semester"
+        }
+      ],
+      "namespace": "App\\Http\\Controllers"
+    },
+    {
+      "name": "UserController",
+      "methods": [
+        {
+          "name": "index",
+          "params": ""
+        },
+        {
+          "name": "create",
+          "params": ""
+        },
+        {
+          "name": "edit",
+          "params": "User $user"
+        },
+        {
+          "name": "update",
+          "params": "Request $request, User $user"
+        },
+        {
+          "name": "store",
+          "params": "Request $request"
+        },
+        {
+          "name": "destroy",
+          "params": "User $user"
+        }
+      ],
+      "namespace": "App\\Http\\Controllers"
+    }
+  ],
+  "services": [],
+  "relationships": [
+    {
+      "sourceModel": "Karyawan",
+      "relationshipType": "hasOne",
+      "relationshipName": "user",
+      "targetModel": "User::class"
+    },
+    {
+      "sourceModel": "Karyawan",
+      "relationshipType": "hasMany",
+      "relationshipName": "kpiScores",
+      "targetModel": "KpiScore::class"
+    },
+    {
+      "sourceModel": "Karyawan",
+      "relationshipType": "belongsToMany",
+      "relationshipName": "leaders",
+      "targetModel": "User::class"
+    },
+    {
+      "sourceModel": "KpiCategory",
+      "relationshipType": "hasMany",
+      "relationshipName": "indicators",
+      "targetModel": "KpiIndicator::class"
+    },
+    {
+      "sourceModel": "KpiIndicator",
+      "relationshipType": "belongsTo",
+      "relationshipName": "kategori",
+      "targetModel": "KpiCategory::class"
+    },
+    {
+      "sourceModel": "KpiScore",
+      "relationshipType": "belongsTo",
+      "relationshipName": "karyawan",
+      "targetModel": "Karyawan::class"
+    },
+    {
+      "sourceModel": "KpiScore",
+      "relationshipType": "belongsTo",
+      "relationshipName": "kpiIndicator",
+      "targetModel": "KpiIndicator::class"
+    },
+    {
+      "sourceModel": "KpiScore",
+      "relationshipType": "belongsTo",
+      "relationshipName": "indicator",
+      "targetModel": "KpiIndicator::class"
+    },
+    {
+      "sourceModel": "KpiScore",
+      "relationshipType": "belongsTo",
+      "relationshipName": "user",
+      "targetModel": "User::class"
+    },
+    {
+      "sourceModel": "KpiSummary",
+      "relationshipType": "belongsTo",
+      "relationshipName": "karyawan",
+      "targetModel": "Karyawan::class"
+    },
+    {
+      "sourceModel": "User",
+      "relationshipType": "hasOne",
+      "relationshipName": "karyawan",
+      "targetModel": "Karyawan::class"
+    },
+    {
+      "sourceModel": "User",
+      "relationshipType": "hasMany",
+      "relationshipName": "kpiScores",
+      "targetModel": "KpiScore::class"
+    }
+  ],
+  "directories": {
+    ".": {
+      "models": [
+        "Karyawan",
+        "KpiCategory",
+        "KpiIndicator",
+        "KpiScore",
+        "KpiSummary",
+        "LeaderKaryawan",
+        "User"
+      ],
+      "controllers": [
+        "AdminUserController",
+        "ChartController",
+        "Controller",
+        "DashboardController",
+        "DashboardKaryawanController",
+        "EvaluationController",
+        "KaryawanController",
+        "KpiCategoryController",
+        "KpiIndicatorController",
+        "KpiScoreController",
+        "KpiSummaryController",
+        "UserController"
+      ]
+    }
+  }
+}

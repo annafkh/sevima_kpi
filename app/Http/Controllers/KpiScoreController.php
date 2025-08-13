@@ -13,13 +13,11 @@ class KpiScoreController extends Controller
     {
         $user = auth()->user();
     
-        // Jika HC, lihat semua
         if ($user->role === 'hc') {
             $scores = KpiScore::with(['karyawan', 'kpiIndicator'])->get();
             $karyawans = Karyawan::all();
         }
     
-        // Jika leader, hanya bawahan
         elseif ($user->role === 'leader') {
             $bawahanIds = $user->bawahan->pluck('id');
             $scores = KpiScore::with(['karyawan', 'kpiIndicator'])
@@ -49,7 +47,6 @@ public function visualisasi()
 {
     $scores = \App\Models\KpiScore::with(['karyawan', 'kpiIndicator'])->get();
 
-    // Group berdasarkan karyawan ID
     $groupedScores = $scores->groupBy('user_id');
 
     return view('kpi_scores.visualisasi_grouped', compact('groupedScores'));
@@ -103,7 +100,6 @@ public function edit($id)
     $indicators = KpiIndicator::all();
     $tanggal =  KpiIndicator::all();
 
-    // Simpan halaman sebelumnya ke session jika belum ada
     if (!session()->has('previous_page')) {
         session(['previous_page' => url()->previous()]);
     }
@@ -143,7 +139,6 @@ public function edit($id)
         'nilai' => 'required|numeric|min:1|max:5',
         'tanggal' => 'required|date',
     ]);
-        // Hitung periode semester aktif
         $now = now();
         $semesterAwal = $now->month <= 6 ? $now->startOfYear() : $now->startOfYear()->addMonths(6);
         $semesterAkhir = $semesterAwal->copy()->addMonths(5)->endOfMonth();

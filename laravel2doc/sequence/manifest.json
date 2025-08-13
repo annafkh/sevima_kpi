@@ -1,0 +1,668 @@
+{
+  "projectName": "laravel/laravel",
+  "projectVersion": "v12.7.2",
+  "generatedAt": "2025-07-10T05:36:37.106Z",
+  "diagrams": [
+    {
+      "id": "AdminUserController-create",
+      "name": "AdminUserController::create",
+      "controller": "AdminUser",
+      "method": "create",
+      "type": "create",
+      "description": "Creates a new resource in AdminUserController",
+      "fileName": "AdminUserController_create.md",
+      "models": [],
+      "timestamp": "2025-07-10T05:36:37.038Z"
+    },
+    {
+      "id": "AdminUserController-store",
+      "name": "AdminUserController::store",
+      "controller": "AdminUser",
+      "method": "store",
+      "type": "create",
+      "description": "Creates a new resource in AdminUserController",
+      "fileName": "AdminUserController_store.md",
+      "models": [
+        "User"
+      ],
+      "timestamp": "2025-07-10T05:36:37.039Z"
+    },
+    {
+      "id": "ChartController-index",
+      "name": "ChartController::index",
+      "controller": "Chart",
+      "method": "index",
+      "type": "list",
+      "description": "Retrieves a collection of resources from ChartController",
+      "fileName": "ChartController_index.md",
+      "models": [],
+      "timestamp": "2025-07-10T05:36:37.040Z"
+    },
+    {
+      "id": "ChartController-getChartData",
+      "name": "ChartController::getChartData",
+      "controller": "Chart",
+      "method": "getChartData",
+      "type": "generic",
+      "description": "Handles getChartData operation in ChartController",
+      "fileName": "ChartController_getChartData.md",
+      "models": [
+        "Karyawan"
+      ],
+      "timestamp": "2025-07-10T05:36:37.040Z"
+    },
+    {
+      "id": "ChartController-chartDetail",
+      "name": "ChartController::chartDetail",
+      "controller": "Chart",
+      "method": "chartDetail",
+      "type": "generic",
+      "description": "Handles chartDetail operation in ChartController",
+      "fileName": "ChartController_chartDetail.md",
+      "models": [],
+      "timestamp": "2025-07-10T05:36:37.040Z"
+    },
+    {
+      "id": "ChartController-semesterForLeader",
+      "name": "ChartController::semesterForLeader",
+      "controller": "Chart",
+      "method": "semesterForLeader",
+      "type": "generic",
+      "description": "Handles semesterForLeader operation in ChartController",
+      "fileName": "ChartController_semesterForLeader.md",
+      "models": [
+        "KpiScore"
+      ],
+      "timestamp": "2025-07-10T05:36:37.040Z"
+    },
+    {
+      "id": "ChartController-detailForLeader",
+      "name": "ChartController::detailForLeader",
+      "controller": "Chart",
+      "method": "detailForLeader",
+      "type": "generic",
+      "description": "Handles detailForLeader operation in ChartController",
+      "fileName": "ChartController_detailForLeader.md",
+      "models": [
+        "KpiScore"
+      ],
+      "timestamp": "2025-07-10T05:36:37.041Z"
+    },
+    {
+      "id": "DashboardController-index",
+      "name": "DashboardController::index",
+      "controller": "Dashboard",
+      "method": "index",
+      "type": "list",
+      "description": "Retrieves a collection of resources from DashboardController",
+      "fileName": "DashboardController_index.md",
+      "models": [
+        "KpiScore"
+      ],
+      "timestamp": "2025-07-10T05:36:37.041Z"
+    },
+    {
+      "id": "DashboardKaryawanController-index",
+      "name": "DashboardKaryawanController::index",
+      "controller": "DashboardKaryawan",
+      "method": "index",
+      "type": "list",
+      "description": "Retrieves a collection of resources from DashboardKaryawanController",
+      "fileName": "DashboardKaryawanController_index.md",
+      "models": [
+        "KpiScore"
+      ],
+      "timestamp": "2025-07-10T05:36:37.041Z"
+    },
+    {
+      "id": "EvaluationController-index",
+      "name": "EvaluationController::index",
+      "controller": "Evaluation",
+      "method": "index",
+      "type": "list",
+      "description": "Retrieves a collection of resources from EvaluationController",
+      "fileName": "EvaluationController_index.md",
+      "models": [],
+      "timestamp": "2025-07-10T05:36:37.041Z"
+    },
+    {
+      "id": "KaryawanController-index",
+      "name": "KaryawanController::index",
+      "controller": "Karyawan",
+      "method": "index",
+      "type": "list",
+      "description": "Retrieves a collection of resources from KaryawanController",
+      "fileName": "KaryawanController_index.md",
+      "models": [
+        "Karyawan"
+      ],
+      "timestamp": "2025-07-10T05:36:37.042Z"
+    },
+    {
+      "id": "KaryawanController-create",
+      "name": "KaryawanController::create",
+      "controller": "Karyawan",
+      "method": "create",
+      "type": "create",
+      "description": "Creates a new resource in KaryawanController",
+      "fileName": "KaryawanController_create.md",
+      "models": [],
+      "timestamp": "2025-07-10T05:36:37.042Z"
+    },
+    {
+      "id": "KaryawanController-store",
+      "name": "KaryawanController::store",
+      "controller": "Karyawan",
+      "method": "store",
+      "type": "create",
+      "description": "Creates a new resource in KaryawanController",
+      "fileName": "KaryawanController_store.md",
+      "models": [
+        "Karyawan"
+      ],
+      "timestamp": "2025-07-10T05:36:37.042Z"
+    },
+    {
+      "id": "KaryawanController-show",
+      "name": "KaryawanController::show",
+      "controller": "Karyawan",
+      "method": "show",
+      "type": "show",
+      "description": "Retrieves a specific resource from KaryawanController",
+      "fileName": "KaryawanController_show.md",
+      "models": [],
+      "timestamp": "2025-07-10T05:36:37.043Z"
+    },
+    {
+      "id": "KaryawanController-edit",
+      "name": "KaryawanController::edit",
+      "controller": "Karyawan",
+      "method": "edit",
+      "type": "update",
+      "description": "Updates an existing resource in KaryawanController",
+      "fileName": "KaryawanController_edit.md",
+      "models": [],
+      "timestamp": "2025-07-10T05:36:37.043Z"
+    },
+    {
+      "id": "KaryawanController-update",
+      "name": "KaryawanController::update",
+      "controller": "Karyawan",
+      "method": "update",
+      "type": "update",
+      "description": "Updates an existing resource in KaryawanController",
+      "fileName": "KaryawanController_update.md",
+      "models": [],
+      "timestamp": "2025-07-10T05:36:37.043Z"
+    },
+    {
+      "id": "KaryawanController-destroy",
+      "name": "KaryawanController::destroy",
+      "controller": "Karyawan",
+      "method": "destroy",
+      "type": "delete",
+      "description": "Removes a resource from KaryawanController",
+      "fileName": "KaryawanController_destroy.md",
+      "models": [],
+      "timestamp": "2025-07-10T05:36:37.044Z"
+    },
+    {
+      "id": "KpiCategoryController-index",
+      "name": "KpiCategoryController::index",
+      "controller": "KpiCategory",
+      "method": "index",
+      "type": "list",
+      "description": "Retrieves a collection of resources from KpiCategoryController",
+      "fileName": "KpiCategoryController_index.md",
+      "models": [
+        "KpiCategory"
+      ],
+      "timestamp": "2025-07-10T05:36:37.044Z"
+    },
+    {
+      "id": "KpiCategoryController-create",
+      "name": "KpiCategoryController::create",
+      "controller": "KpiCategory",
+      "method": "create",
+      "type": "create",
+      "description": "Creates a new resource in KpiCategoryController",
+      "fileName": "KpiCategoryController_create.md",
+      "models": [],
+      "timestamp": "2025-07-10T05:36:37.044Z"
+    },
+    {
+      "id": "KpiCategoryController-store",
+      "name": "KpiCategoryController::store",
+      "controller": "KpiCategory",
+      "method": "store",
+      "type": "create",
+      "description": "Creates a new resource in KpiCategoryController",
+      "fileName": "KpiCategoryController_store.md",
+      "models": [
+        "KpiCategory"
+      ],
+      "timestamp": "2025-07-10T05:36:37.044Z"
+    },
+    {
+      "id": "KpiCategoryController-edit",
+      "name": "KpiCategoryController::edit",
+      "controller": "KpiCategory",
+      "method": "edit",
+      "type": "update",
+      "description": "Updates an existing resource in KpiCategoryController",
+      "fileName": "KpiCategoryController_edit.md",
+      "models": [
+        "KpiCategory"
+      ],
+      "timestamp": "2025-07-10T05:36:37.045Z"
+    },
+    {
+      "id": "KpiCategoryController-update",
+      "name": "KpiCategoryController::update",
+      "controller": "KpiCategory",
+      "method": "update",
+      "type": "update",
+      "description": "Updates an existing resource in KpiCategoryController",
+      "fileName": "KpiCategoryController_update.md",
+      "models": [
+        "KpiCategory"
+      ],
+      "timestamp": "2025-07-10T05:36:37.045Z"
+    },
+    {
+      "id": "KpiCategoryController-destroy",
+      "name": "KpiCategoryController::destroy",
+      "controller": "KpiCategory",
+      "method": "destroy",
+      "type": "delete",
+      "description": "Removes a resource from KpiCategoryController",
+      "fileName": "KpiCategoryController_destroy.md",
+      "models": [],
+      "timestamp": "2025-07-10T05:36:37.045Z"
+    },
+    {
+      "id": "KpiIndicatorController-index",
+      "name": "KpiIndicatorController::index",
+      "controller": "KpiIndicator",
+      "method": "index",
+      "type": "list",
+      "description": "Retrieves a collection of resources from KpiIndicatorController",
+      "fileName": "KpiIndicatorController_index.md",
+      "models": [
+        "KpiCategory",
+        "KpiIndicator"
+      ],
+      "timestamp": "2025-07-10T05:36:37.045Z"
+    },
+    {
+      "id": "KpiIndicatorController-create",
+      "name": "KpiIndicatorController::create",
+      "controller": "KpiIndicator",
+      "method": "create",
+      "type": "create",
+      "description": "Creates a new resource in KpiIndicatorController",
+      "fileName": "KpiIndicatorController_create.md",
+      "models": [
+        "KpiCategory"
+      ],
+      "timestamp": "2025-07-10T05:36:37.045Z"
+    },
+    {
+      "id": "KpiIndicatorController-store",
+      "name": "KpiIndicatorController::store",
+      "controller": "KpiIndicator",
+      "method": "store",
+      "type": "create",
+      "description": "Creates a new resource in KpiIndicatorController",
+      "fileName": "KpiIndicatorController_store.md",
+      "models": [
+        "KpiIndicator"
+      ],
+      "timestamp": "2025-07-10T05:36:37.045Z"
+    },
+    {
+      "id": "KpiIndicatorController-edit",
+      "name": "KpiIndicatorController::edit",
+      "controller": "KpiIndicator",
+      "method": "edit",
+      "type": "update",
+      "description": "Updates an existing resource in KpiIndicatorController",
+      "fileName": "KpiIndicatorController_edit.md",
+      "models": [
+        "KpiCategory",
+        "KpiIndicator"
+      ],
+      "timestamp": "2025-07-10T05:36:37.046Z"
+    },
+    {
+      "id": "KpiIndicatorController-update",
+      "name": "KpiIndicatorController::update",
+      "controller": "KpiIndicator",
+      "method": "update",
+      "type": "update",
+      "description": "Updates an existing resource in KpiIndicatorController",
+      "fileName": "KpiIndicatorController_update.md",
+      "models": [
+        "KpiIndicator"
+      ],
+      "timestamp": "2025-07-10T05:36:37.046Z"
+    },
+    {
+      "id": "KpiIndicatorController-destroy",
+      "name": "KpiIndicatorController::destroy",
+      "controller": "KpiIndicator",
+      "method": "destroy",
+      "type": "delete",
+      "description": "Removes a resource from KpiIndicatorController",
+      "fileName": "KpiIndicatorController_destroy.md",
+      "models": [],
+      "timestamp": "2025-07-10T05:36:37.046Z"
+    },
+    {
+      "id": "KpiScoreController-index",
+      "name": "KpiScoreController::index",
+      "controller": "KpiScore",
+      "method": "index",
+      "type": "list",
+      "description": "Retrieves a collection of resources from KpiScoreController",
+      "fileName": "KpiScoreController_index.md",
+      "models": [
+        "Karyawan",
+        "KpiScore"
+      ],
+      "timestamp": "2025-07-10T05:36:37.046Z"
+    },
+    {
+      "id": "KpiScoreController-visualisasi",
+      "name": "KpiScoreController::visualisasi",
+      "controller": "KpiScore",
+      "method": "visualisasi",
+      "type": "generic",
+      "description": "Handles visualisasi operation in KpiScoreController",
+      "fileName": "KpiScoreController_visualisasi.md",
+      "models": [
+        "KpiScore"
+      ],
+      "timestamp": "2025-07-10T05:36:37.046Z"
+    },
+    {
+      "id": "KpiScoreController-create",
+      "name": "KpiScoreController::create",
+      "controller": "KpiScore",
+      "method": "create",
+      "type": "create",
+      "description": "Creates a new resource in KpiScoreController",
+      "fileName": "KpiScoreController_create.md",
+      "models": [
+        "Karyawan"
+      ],
+      "timestamp": "2025-07-10T05:36:37.046Z"
+    },
+    {
+      "id": "KpiScoreController-create",
+      "name": "KpiScoreController::create",
+      "controller": "KpiScore",
+      "method": "create",
+      "type": "create",
+      "description": "Creates a new resource in KpiScoreController",
+      "fileName": "KpiScoreController_create.md",
+      "models": [
+        "Karyawan"
+      ],
+      "timestamp": "2025-07-10T05:36:37.046Z"
+    },
+    {
+      "id": "KpiScoreController-edit",
+      "name": "KpiScoreController::edit",
+      "controller": "KpiScore",
+      "method": "edit",
+      "type": "update",
+      "description": "Updates an existing resource in KpiScoreController",
+      "fileName": "KpiScoreController_edit.md",
+      "models": [
+        "Karyawan",
+        "KpiIndicator",
+        "KpiScore"
+      ],
+      "timestamp": "2025-07-10T05:36:37.047Z"
+    },
+    {
+      "id": "KpiScoreController-store",
+      "name": "KpiScoreController::store",
+      "controller": "KpiScore",
+      "method": "store",
+      "type": "create",
+      "description": "Creates a new resource in KpiScoreController",
+      "fileName": "KpiScoreController_store.md",
+      "models": [
+        "Karyawan"
+      ],
+      "timestamp": "2025-07-10T05:36:37.047Z"
+    },
+    {
+      "id": "KpiScoreController-store",
+      "name": "KpiScoreController::store",
+      "controller": "KpiScore",
+      "method": "store",
+      "type": "create",
+      "description": "Creates a new resource in KpiScoreController",
+      "fileName": "KpiScoreController_store.md",
+      "models": [
+        "Karyawan"
+      ],
+      "timestamp": "2025-07-10T05:36:37.047Z"
+    },
+    {
+      "id": "KpiScoreController-show",
+      "name": "KpiScoreController::show",
+      "controller": "KpiScore",
+      "method": "show",
+      "type": "show",
+      "description": "Retrieves a specific resource from KpiScoreController",
+      "fileName": "KpiScoreController_show.md",
+      "models": [],
+      "timestamp": "2025-07-10T05:36:37.047Z"
+    },
+    {
+      "id": "KpiScoreController-update",
+      "name": "KpiScoreController::update",
+      "controller": "KpiScore",
+      "method": "update",
+      "type": "update",
+      "description": "Updates an existing resource in KpiScoreController",
+      "fileName": "KpiScoreController_update.md",
+      "models": [
+        "KpiScore"
+      ],
+      "timestamp": "2025-07-10T05:36:37.048Z"
+    },
+    {
+      "id": "KpiScoreController-destroy",
+      "name": "KpiScoreController::destroy",
+      "controller": "KpiScore",
+      "method": "destroy",
+      "type": "delete",
+      "description": "Removes a resource from KpiScoreController",
+      "fileName": "KpiScoreController_destroy.md",
+      "models": [
+        "KpiScore"
+      ],
+      "timestamp": "2025-07-10T05:36:37.049Z"
+    },
+    {
+      "id": "KpiSummaryController-index",
+      "name": "KpiSummaryController::index",
+      "controller": "KpiSummary",
+      "method": "index",
+      "type": "list",
+      "description": "Retrieves a collection of resources from KpiSummaryController",
+      "fileName": "KpiSummaryController_index.md",
+      "models": [],
+      "timestamp": "2025-07-10T05:36:37.049Z"
+    },
+    {
+      "id": "KpiSummaryController-show",
+      "name": "KpiSummaryController::show",
+      "controller": "KpiSummary",
+      "method": "show",
+      "type": "show",
+      "description": "Retrieves a specific resource from KpiSummaryController",
+      "fileName": "KpiSummaryController_show.md",
+      "models": [
+        "Karyawan",
+        "KpiScore"
+      ],
+      "timestamp": "2025-07-10T05:36:37.051Z"
+    },
+    {
+      "id": "KpiSummaryController-summary",
+      "name": "KpiSummaryController::summary",
+      "controller": "KpiSummary",
+      "method": "summary",
+      "type": "generic",
+      "description": "Handles summary operation in KpiSummaryController",
+      "fileName": "KpiSummaryController_summary.md",
+      "models": [
+        "KpiScore"
+      ],
+      "timestamp": "2025-07-10T05:36:37.052Z"
+    },
+    {
+      "id": "KpiSummaryController-destroy",
+      "name": "KpiSummaryController::destroy",
+      "controller": "KpiSummary",
+      "method": "destroy",
+      "type": "delete",
+      "description": "Removes a resource from KpiSummaryController",
+      "fileName": "KpiSummaryController_destroy.md",
+      "models": [
+        "KpiScore"
+      ],
+      "timestamp": "2025-07-10T05:36:37.052Z"
+    },
+    {
+      "id": "KpiSummaryController-getSemesterSummary",
+      "name": "KpiSummaryController::getSemesterSummary",
+      "controller": "KpiSummary",
+      "method": "getSemesterSummary",
+      "type": "generic",
+      "description": "Handles getSemesterSummary operation in KpiSummaryController",
+      "fileName": "KpiSummaryController_getSemesterSummary.md",
+      "models": [
+        "KpiScore"
+      ],
+      "timestamp": "2025-07-10T05:36:37.052Z"
+    },
+    {
+      "id": "KpiSummaryController-getSemesterDetail",
+      "name": "KpiSummaryController::getSemesterDetail",
+      "controller": "KpiSummary",
+      "method": "getSemesterDetail",
+      "type": "generic",
+      "description": "Handles getSemesterDetail operation in KpiSummaryController",
+      "fileName": "KpiSummaryController_getSemesterDetail.md",
+      "models": [
+        "KpiScore"
+      ],
+      "timestamp": "2025-07-10T05:36:37.052Z"
+    },
+    {
+      "id": "UserController-index",
+      "name": "UserController::index",
+      "controller": "User",
+      "method": "index",
+      "type": "list",
+      "description": "Retrieves a collection of resources from UserController",
+      "fileName": "UserController_index.md",
+      "models": [
+        "User"
+      ],
+      "timestamp": "2025-07-10T05:36:37.052Z"
+    },
+    {
+      "id": "UserController-create",
+      "name": "UserController::create",
+      "controller": "User",
+      "method": "create",
+      "type": "create",
+      "description": "Creates a new resource in UserController",
+      "fileName": "UserController_create.md",
+      "models": [
+        "Karyawan",
+        "User"
+      ],
+      "timestamp": "2025-07-10T05:36:37.052Z"
+    },
+    {
+      "id": "UserController-edit",
+      "name": "UserController::edit",
+      "controller": "User",
+      "method": "edit",
+      "type": "update",
+      "description": "Updates an existing resource in UserController",
+      "fileName": "UserController_edit.md",
+      "models": [],
+      "timestamp": "2025-07-10T05:36:37.053Z"
+    },
+    {
+      "id": "UserController-update",
+      "name": "UserController::update",
+      "controller": "User",
+      "method": "update",
+      "type": "update",
+      "description": "Updates an existing resource in UserController",
+      "fileName": "UserController_update.md",
+      "models": [],
+      "timestamp": "2025-07-10T05:36:37.053Z"
+    },
+    {
+      "id": "UserController-store",
+      "name": "UserController::store",
+      "controller": "User",
+      "method": "store",
+      "type": "create",
+      "description": "Creates a new resource in UserController",
+      "fileName": "UserController_store.md",
+      "models": [
+        "User"
+      ],
+      "timestamp": "2025-07-10T05:36:37.053Z"
+    },
+    {
+      "id": "UserController-destroy",
+      "name": "UserController::destroy",
+      "controller": "User",
+      "method": "destroy",
+      "type": "delete",
+      "description": "Removes a resource from UserController",
+      "fileName": "UserController_destroy.md",
+      "models": [],
+      "timestamp": "2025-07-10T05:36:37.053Z"
+    }
+  ],
+  "statistics": {
+    "totalDiagrams": 51,
+    "byType": {
+      "create": 14,
+      "list": 10,
+      "generic": 8,
+      "show": 3,
+      "update": 10,
+      "delete": 6
+    },
+    "byController": {
+      "AdminUser": 2,
+      "Chart": 5,
+      "": 0,
+      "Dashboard": 1,
+      "DashboardKaryawan": 1,
+      "Evaluation": 1,
+      "Karyawan": 7,
+      "KpiCategory": 6,
+      "KpiIndicator": 6,
+      "KpiScore": 10,
+      "KpiSummary": 6,
+      "User": 6
+    }
+  }
+}

@@ -8,6 +8,12 @@
     </x-slot>
 
     <div class="py-6">
+    <div class="flex justify-between mb-6 px-6">
+        {{-- Tombol Kembali --}}
+    <a href="{{ url()->previous() }}" class="px-4 py-2 font-bold text-white bg-gray-600 rounded shadow hover:bg-gray-700">
+        ← Kembali
+    </a>
+    </div>
         <div class="max-w-5xl p-6 mx-auto bg-white rounded shadow sm:px-6 lg:px-8">
             <form action="{{ route('kpi_categories.store') }}" method="POST">
                 @csrf

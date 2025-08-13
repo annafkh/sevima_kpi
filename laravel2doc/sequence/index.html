@@ -1,0 +1,3773 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sequence Diagrams - laravel/laravel</title>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="assets/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+<!-- Add Font Awesome CDN if not already included -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+<div class="navbar">
+  <div class="navbar-title">
+    <i class="fas fa-code-branch"></i> Laravel2Doc
+  </div>
+  <div class="navbar-links">
+    <a href="https://laravel2doc.netlify.app/"><i class="fas fa-house"></i> Home</a>
+    <a href="../erd/"><i class="fas fa-project-diagram"></i> ERD</a>
+    <a href="../uml/"><i class="fas fa-sitemap"></i> UML</a>
+    <a href="../sequence/"><i class="fas fa-stream"></i> Sequence</a>
+    <a href="../api/"><i class="fas fa-plug"></i> API</a>
+    <a href="https://github.com/Priom7/laravel2doc" target="_blank" class="github-link">
+      <i class="fab fa-github"></i> GitHub
+    </a>
+  </div>
+</div>
+
+  <header>
+    <h1>Sequence Diagrams</h1>
+    <h2>laravel/laravel (Laravel v12.7.2)</h2>
+  </header>
+  
+  <nav>
+    <div class="controls">
+      <input type="text" id="search-diagrams" class="search-box" placeholder="Search diagrams...">
+      <select id="filter-type" class="select-box">
+        <option value="all">All Types</option>
+        <option value="list">List</option>
+        <option value="show">Show</option>
+        <option value="create">Create</option>
+        <option value="update">Update</option>
+        <option value="delete">Delete</option>
+        <option value="generic">Generic</option>
+      </select>
+      <select id="filter-controller" class="select-box">
+        <option value="all">All Controllers</option>
+        <option value="AdminUser">AdminUser</option>
+        <option value="Chart">Chart</option>
+        <option value=""></option>
+        <option value="Dashboard">Dashboard</option>
+        <option value="DashboardKaryawan">DashboardKaryawan</option>
+        <option value="Evaluation">Evaluation</option>
+        <option value="Karyawan">Karyawan</option>
+        <option value="KpiCategory">KpiCategory</option>
+        <option value="KpiIndicator">KpiIndicator</option>
+        <option value="KpiScore">KpiScore</option>
+        <option value="KpiSummary">KpiSummary</option>
+        <option value="User">User</option>
+      </select>
+    </div>
+    <div class="controls">
+      <select id="diagram-theme" class="select-box">
+        <option value="default">Theme: Default</option>
+        <option value="forest">Theme: Forest</option>
+        <option value="dark">Theme: Dark</option>
+        <option value="neutral">Theme: Neutral</option>
+      </select>
+      <button class="btn btn-blue theme-toggle" id="theme-toggle">🌙</button>
+    </div>
+  </nav>
+  
+  <main>
+    <div class="dashboard">
+      <div class="stat-card">
+        <div class="stat-number">51</div>
+        <div class="stat-label">Total Diagrams</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">12</div>
+        <div class="stat-label">Controllers</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">14</div>
+        <div class="stat-label">Create Operations</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">10</div>
+        <div class="stat-label">List Operations</div>
+      </div>
+    </div>
+    
+    <div class="chart-container" style="display: flex; gap: 2rem; margin-bottom: 2rem;">
+      <div style="flex: 1; background-color: var(--light-color); padding: 1rem; border-radius: 8px;">
+        <h3>Diagram Types Distribution</h3>
+        <canvas id="stats-chart" data-stats='{"totalDiagrams":51,"byType":{"create":14,"list":10,"generic":8,"show":3,"update":10,"delete":6},"byController":{"AdminUser":2,"Chart":5,"":0,"Dashboard":1,"DashboardKaryawan":1,"Evaluation":1,"Karyawan":7,"KpiCategory":6,"KpiIndicator":6,"KpiScore":10,"KpiSummary":6,"User":6}}'></canvas>
+      </div>
+      <div style="flex: 1; background-color: var(--light-color); padding: 1rem; border-radius: 8px;">
+        <h3>Controller Distribution</h3>
+        <canvas id="controller-chart" data-stats='{"totalDiagrams":51,"byType":{"create":14,"list":10,"generic":8,"show":3,"update":10,"delete":6},"byController":{"AdminUser":2,"Chart":5,"":0,"Dashboard":1,"DashboardKaryawan":1,"Evaluation":1,"Karyawan":7,"KpiCategory":6,"KpiIndicator":6,"KpiScore":10,"KpiSummary":6,"User":6}}'></canvas>
+      </div>
+    </div>
+    
+    <div class="tabs">
+      <div class="tab active" data-tab="all-diagrams">All Diagrams</div>
+      <div class="tab" data-tab="by-type">By Type</div>
+      <div class="tab" data-tab="by-controller">By Controller</div>
+    </div>
+    
+    <div id="all-diagrams" class="tab-content active">
+      <div class="diagram-grid">
+        
+      <div class="diagram-card" data-controller="AdminUser" data-method="create" data-type="create">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-create">CREATE</div>
+          <h4>AdminUser</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">create</div>
+          <div class="diagram-description">Creates a new resource in AdminUserController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            
+            <span style="font-style: italic; opacity: 0.7;">No models</span>
+          </div>
+          <div class="diagram-actions">
+            <a href="view_AdminUserController-create.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+      
+      <div class="diagram-card" data-controller="AdminUser" data-method="store" data-type="create">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-create">CREATE</div>
+          <h4>AdminUser</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">store</div>
+          <div class="diagram-description">Creates a new resource in AdminUserController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">User</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_AdminUserController-store.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+      
+      <div class="diagram-card" data-controller="Chart" data-method="index" data-type="list">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-list">LIST</div>
+          <h4>Chart</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">index</div>
+          <div class="diagram-description">Retrieves a collection of resources from ChartController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            
+            <span style="font-style: italic; opacity: 0.7;">No models</span>
+          </div>
+          <div class="diagram-actions">
+            <a href="view_ChartController-index.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+      
+      <div class="diagram-card" data-controller="Chart" data-method="getChartData" data-type="generic">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-generic">GENERIC</div>
+          <h4>Chart</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">getChartData</div>
+          <div class="diagram-description">Handles getChartData operation in ChartController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">Karyawan</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_ChartController-getChartData.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+      
+      <div class="diagram-card" data-controller="Chart" data-method="chartDetail" data-type="generic">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-generic">GENERIC</div>
+          <h4>Chart</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">chartDetail</div>
+          <div class="diagram-description">Handles chartDetail operation in ChartController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            
+            <span style="font-style: italic; opacity: 0.7;">No models</span>
+          </div>
+          <div class="diagram-actions">
+            <a href="view_ChartController-chartDetail.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+      
+      <div class="diagram-card" data-controller="Chart" data-method="semesterForLeader" data-type="generic">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-generic">GENERIC</div>
+          <h4>Chart</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">semesterForLeader</div>
+          <div class="diagram-description">Handles semesterForLeader operation in ChartController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">KpiScore</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_ChartController-semesterForLeader.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+      
+      <div class="diagram-card" data-controller="Chart" data-method="detailForLeader" data-type="generic">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-generic">GENERIC</div>
+          <h4>Chart</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">detailForLeader</div>
+          <div class="diagram-description">Handles detailForLeader operation in ChartController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">KpiScore</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_ChartController-detailForLeader.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+      
+      <div class="diagram-card" data-controller="Dashboard" data-method="index" data-type="list">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-list">LIST</div>
+          <h4>Dashboard</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">index</div>
+          <div class="diagram-description">Retrieves a collection of resources from DashboardController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">KpiScore</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_DashboardController-index.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+      
+      <div class="diagram-card" data-controller="DashboardKaryawan" data-method="index" data-type="list">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-list">LIST</div>
+          <h4>DashboardKaryawan</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">index</div>
+          <div class="diagram-description">Retrieves a collection of resources from DashboardKaryawanController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">KpiScore</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_DashboardKaryawanController-index.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+      
+      <div class="diagram-card" data-controller="Evaluation" data-method="index" data-type="list">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-list">LIST</div>
+          <h4>Evaluation</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">index</div>
+          <div class="diagram-description">Retrieves a collection of resources from EvaluationController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            
+            <span style="font-style: italic; opacity: 0.7;">No models</span>
+          </div>
+          <div class="diagram-actions">
+            <a href="view_EvaluationController-index.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+      
+      <div class="diagram-card" data-controller="Karyawan" data-method="index" data-type="list">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-list">LIST</div>
+          <h4>Karyawan</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">index</div>
+          <div class="diagram-description">Retrieves a collection of resources from KaryawanController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">Karyawan</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_KaryawanController-index.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+      
+      <div class="diagram-card" data-controller="Karyawan" data-method="create" data-type="create">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-create">CREATE</div>
+          <h4>Karyawan</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">create</div>
+          <div class="diagram-description">Creates a new resource in KaryawanController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            
+            <span style="font-style: italic; opacity: 0.7;">No models</span>
+          </div>
+          <div class="diagram-actions">
+            <a href="view_KaryawanController-create.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+      
+      <div class="diagram-card" data-controller="Karyawan" data-method="store" data-type="create">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-create">CREATE</div>
+          <h4>Karyawan</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">store</div>
+          <div class="diagram-description">Creates a new resource in KaryawanController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">Karyawan</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_KaryawanController-store.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+      
+      <div class="diagram-card" data-controller="Karyawan" data-method="show" data-type="show">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-show">SHOW</div>
+          <h4>Karyawan</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">show</div>
+          <div class="diagram-description">Retrieves a specific resource from KaryawanController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            
+            <span style="font-style: italic; opacity: 0.7;">No models</span>
+          </div>
+          <div class="diagram-actions">
+            <a href="view_KaryawanController-show.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+      
+      <div class="diagram-card" data-controller="Karyawan" data-method="edit" data-type="update">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-update">UPDATE</div>
+          <h4>Karyawan</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">edit</div>
+          <div class="diagram-description">Updates an existing resource in KaryawanController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            
+            <span style="font-style: italic; opacity: 0.7;">No models</span>
+          </div>
+          <div class="diagram-actions">
+            <a href="view_KaryawanController-edit.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+      
+      <div class="diagram-card" data-controller="Karyawan" data-method="update" data-type="update">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-update">UPDATE</div>
+          <h4>Karyawan</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">update</div>
+          <div class="diagram-description">Updates an existing resource in KaryawanController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            
+            <span style="font-style: italic; opacity: 0.7;">No models</span>
+          </div>
+          <div class="diagram-actions">
+            <a href="view_KaryawanController-update.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+      
+      <div class="diagram-card" data-controller="Karyawan" data-method="destroy" data-type="delete">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-delete">DELETE</div>
+          <h4>Karyawan</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">destroy</div>
+          <div class="diagram-description">Removes a resource from KaryawanController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            
+            <span style="font-style: italic; opacity: 0.7;">No models</span>
+          </div>
+          <div class="diagram-actions">
+            <a href="view_KaryawanController-destroy.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+      
+      <div class="diagram-card" data-controller="KpiCategory" data-method="index" data-type="list">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-list">LIST</div>
+          <h4>KpiCategory</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">index</div>
+          <div class="diagram-description">Retrieves a collection of resources from KpiCategoryController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">KpiCategory</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_KpiCategoryController-index.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+      
+      <div class="diagram-card" data-controller="KpiCategory" data-method="create" data-type="create">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-create">CREATE</div>
+          <h4>KpiCategory</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">create</div>
+          <div class="diagram-description">Creates a new resource in KpiCategoryController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            
+            <span style="font-style: italic; opacity: 0.7;">No models</span>
+          </div>
+          <div class="diagram-actions">
+            <a href="view_KpiCategoryController-create.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+      
+      <div class="diagram-card" data-controller="KpiCategory" data-method="store" data-type="create">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-create">CREATE</div>
+          <h4>KpiCategory</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">store</div>
+          <div class="diagram-description">Creates a new resource in KpiCategoryController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">KpiCategory</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_KpiCategoryController-store.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+      
+      <div class="diagram-card" data-controller="KpiCategory" data-method="edit" data-type="update">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-update">UPDATE</div>
+          <h4>KpiCategory</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">edit</div>
+          <div class="diagram-description">Updates an existing resource in KpiCategoryController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">KpiCategory</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_KpiCategoryController-edit.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+      
+      <div class="diagram-card" data-controller="KpiCategory" data-method="update" data-type="update">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-update">UPDATE</div>
+          <h4>KpiCategory</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">update</div>
+          <div class="diagram-description">Updates an existing resource in KpiCategoryController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">KpiCategory</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_KpiCategoryController-update.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+      
+      <div class="diagram-card" data-controller="KpiCategory" data-method="destroy" data-type="delete">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-delete">DELETE</div>
+          <h4>KpiCategory</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">destroy</div>
+          <div class="diagram-description">Removes a resource from KpiCategoryController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            
+            <span style="font-style: italic; opacity: 0.7;">No models</span>
+          </div>
+          <div class="diagram-actions">
+            <a href="view_KpiCategoryController-destroy.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+      
+      <div class="diagram-card" data-controller="KpiIndicator" data-method="index" data-type="list">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-list">LIST</div>
+          <h4>KpiIndicator</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">index</div>
+          <div class="diagram-description">Retrieves a collection of resources from KpiIndicatorController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">KpiCategory</span> <span class="model-tag">KpiIndicator</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_KpiIndicatorController-index.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+      
+      <div class="diagram-card" data-controller="KpiIndicator" data-method="create" data-type="create">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-create">CREATE</div>
+          <h4>KpiIndicator</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">create</div>
+          <div class="diagram-description">Creates a new resource in KpiIndicatorController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">KpiCategory</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_KpiIndicatorController-create.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+      
+      <div class="diagram-card" data-controller="KpiIndicator" data-method="store" data-type="create">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-create">CREATE</div>
+          <h4>KpiIndicator</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">store</div>
+          <div class="diagram-description">Creates a new resource in KpiIndicatorController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">KpiIndicator</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_KpiIndicatorController-store.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+      
+      <div class="diagram-card" data-controller="KpiIndicator" data-method="edit" data-type="update">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-update">UPDATE</div>
+          <h4>KpiIndicator</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">edit</div>
+          <div class="diagram-description">Updates an existing resource in KpiIndicatorController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">KpiCategory</span> <span class="model-tag">KpiIndicator</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_KpiIndicatorController-edit.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+      
+      <div class="diagram-card" data-controller="KpiIndicator" data-method="update" data-type="update">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-update">UPDATE</div>
+          <h4>KpiIndicator</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">update</div>
+          <div class="diagram-description">Updates an existing resource in KpiIndicatorController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">KpiIndicator</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_KpiIndicatorController-update.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+      
+      <div class="diagram-card" data-controller="KpiIndicator" data-method="destroy" data-type="delete">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-delete">DELETE</div>
+          <h4>KpiIndicator</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">destroy</div>
+          <div class="diagram-description">Removes a resource from KpiIndicatorController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            
+            <span style="font-style: italic; opacity: 0.7;">No models</span>
+          </div>
+          <div class="diagram-actions">
+            <a href="view_KpiIndicatorController-destroy.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+      
+      <div class="diagram-card" data-controller="KpiScore" data-method="index" data-type="list">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-list">LIST</div>
+          <h4>KpiScore</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">index</div>
+          <div class="diagram-description">Retrieves a collection of resources from KpiScoreController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">Karyawan</span> <span class="model-tag">KpiScore</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_KpiScoreController-index.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+      
+      <div class="diagram-card" data-controller="KpiScore" data-method="visualisasi" data-type="generic">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-generic">GENERIC</div>
+          <h4>KpiScore</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">visualisasi</div>
+          <div class="diagram-description">Handles visualisasi operation in KpiScoreController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">KpiScore</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_KpiScoreController-visualisasi.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+      
+      <div class="diagram-card" data-controller="KpiScore" data-method="create" data-type="create">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-create">CREATE</div>
+          <h4>KpiScore</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">create</div>
+          <div class="diagram-description">Creates a new resource in KpiScoreController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">Karyawan</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_KpiScoreController-create.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+      
+      <div class="diagram-card" data-controller="KpiScore" data-method="create" data-type="create">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-create">CREATE</div>
+          <h4>KpiScore</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">create</div>
+          <div class="diagram-description">Creates a new resource in KpiScoreController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">Karyawan</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_KpiScoreController-create.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+      
+      <div class="diagram-card" data-controller="KpiScore" data-method="edit" data-type="update">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-update">UPDATE</div>
+          <h4>KpiScore</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">edit</div>
+          <div class="diagram-description">Updates an existing resource in KpiScoreController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">Karyawan</span> <span class="model-tag">KpiIndicator</span> <span class="model-tag">KpiScore</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_KpiScoreController-edit.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+      
+      <div class="diagram-card" data-controller="KpiScore" data-method="store" data-type="create">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-create">CREATE</div>
+          <h4>KpiScore</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">store</div>
+          <div class="diagram-description">Creates a new resource in KpiScoreController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">Karyawan</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_KpiScoreController-store.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+      
+      <div class="diagram-card" data-controller="KpiScore" data-method="store" data-type="create">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-create">CREATE</div>
+          <h4>KpiScore</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">store</div>
+          <div class="diagram-description">Creates a new resource in KpiScoreController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">Karyawan</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_KpiScoreController-store.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+      
+      <div class="diagram-card" data-controller="KpiScore" data-method="show" data-type="show">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-show">SHOW</div>
+          <h4>KpiScore</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">show</div>
+          <div class="diagram-description">Retrieves a specific resource from KpiScoreController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            
+            <span style="font-style: italic; opacity: 0.7;">No models</span>
+          </div>
+          <div class="diagram-actions">
+            <a href="view_KpiScoreController-show.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+      
+      <div class="diagram-card" data-controller="KpiScore" data-method="update" data-type="update">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-update">UPDATE</div>
+          <h4>KpiScore</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">update</div>
+          <div class="diagram-description">Updates an existing resource in KpiScoreController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">KpiScore</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_KpiScoreController-update.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+      
+      <div class="diagram-card" data-controller="KpiScore" data-method="destroy" data-type="delete">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-delete">DELETE</div>
+          <h4>KpiScore</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">destroy</div>
+          <div class="diagram-description">Removes a resource from KpiScoreController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">KpiScore</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_KpiScoreController-destroy.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+      
+      <div class="diagram-card" data-controller="KpiSummary" data-method="index" data-type="list">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-list">LIST</div>
+          <h4>KpiSummary</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">index</div>
+          <div class="diagram-description">Retrieves a collection of resources from KpiSummaryController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            
+            <span style="font-style: italic; opacity: 0.7;">No models</span>
+          </div>
+          <div class="diagram-actions">
+            <a href="view_KpiSummaryController-index.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+      
+      <div class="diagram-card" data-controller="KpiSummary" data-method="show" data-type="show">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-show">SHOW</div>
+          <h4>KpiSummary</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">show</div>
+          <div class="diagram-description">Retrieves a specific resource from KpiSummaryController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">Karyawan</span> <span class="model-tag">KpiScore</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_KpiSummaryController-show.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+      
+      <div class="diagram-card" data-controller="KpiSummary" data-method="summary" data-type="generic">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-generic">GENERIC</div>
+          <h4>KpiSummary</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">summary</div>
+          <div class="diagram-description">Handles summary operation in KpiSummaryController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">KpiScore</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_KpiSummaryController-summary.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+      
+      <div class="diagram-card" data-controller="KpiSummary" data-method="destroy" data-type="delete">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-delete">DELETE</div>
+          <h4>KpiSummary</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">destroy</div>
+          <div class="diagram-description">Removes a resource from KpiSummaryController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">KpiScore</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_KpiSummaryController-destroy.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+      
+      <div class="diagram-card" data-controller="KpiSummary" data-method="getSemesterSummary" data-type="generic">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-generic">GENERIC</div>
+          <h4>KpiSummary</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">getSemesterSummary</div>
+          <div class="diagram-description">Handles getSemesterSummary operation in KpiSummaryController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">KpiScore</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_KpiSummaryController-getSemesterSummary.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+      
+      <div class="diagram-card" data-controller="KpiSummary" data-method="getSemesterDetail" data-type="generic">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-generic">GENERIC</div>
+          <h4>KpiSummary</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">getSemesterDetail</div>
+          <div class="diagram-description">Handles getSemesterDetail operation in KpiSummaryController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">KpiScore</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_KpiSummaryController-getSemesterDetail.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+      
+      <div class="diagram-card" data-controller="User" data-method="index" data-type="list">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-list">LIST</div>
+          <h4>User</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">index</div>
+          <div class="diagram-description">Retrieves a collection of resources from UserController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">User</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_UserController-index.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+      
+      <div class="diagram-card" data-controller="User" data-method="create" data-type="create">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-create">CREATE</div>
+          <h4>User</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">create</div>
+          <div class="diagram-description">Creates a new resource in UserController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">Karyawan</span> <span class="model-tag">User</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_UserController-create.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+      
+      <div class="diagram-card" data-controller="User" data-method="edit" data-type="update">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-update">UPDATE</div>
+          <h4>User</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">edit</div>
+          <div class="diagram-description">Updates an existing resource in UserController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            
+            <span style="font-style: italic; opacity: 0.7;">No models</span>
+          </div>
+          <div class="diagram-actions">
+            <a href="view_UserController-edit.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+      
+      <div class="diagram-card" data-controller="User" data-method="update" data-type="update">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-update">UPDATE</div>
+          <h4>User</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">update</div>
+          <div class="diagram-description">Updates an existing resource in UserController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            
+            <span style="font-style: italic; opacity: 0.7;">No models</span>
+          </div>
+          <div class="diagram-actions">
+            <a href="view_UserController-update.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+      
+      <div class="diagram-card" data-controller="User" data-method="store" data-type="create">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-create">CREATE</div>
+          <h4>User</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">store</div>
+          <div class="diagram-description">Creates a new resource in UserController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">User</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_UserController-store.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+      
+      <div class="diagram-card" data-controller="User" data-method="destroy" data-type="delete">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-delete">DELETE</div>
+          <h4>User</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">destroy</div>
+          <div class="diagram-description">Removes a resource from UserController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            
+            <span style="font-style: italic; opacity: 0.7;">No models</span>
+          </div>
+          <div class="diagram-actions">
+            <a href="view_UserController-destroy.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+      </div>
+    </div>
+    
+    <div id="by-type" class="tab-content">
+      
+      <div class="type-section">
+        <h3>List Operations (10)</h3>
+        <div class="diagram-grid">
+          
+      <div class="diagram-card" data-controller="Chart" data-method="index" data-type="list">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-list">LIST</div>
+          <h4>Chart</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">index</div>
+          <div class="diagram-description">Retrieves a collection of resources from ChartController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            
+            <span style="font-style: italic; opacity: 0.7;">No models</span>
+          </div>
+          <div class="diagram-actions">
+            <a href="view_ChartController-index.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+          
+      <div class="diagram-card" data-controller="Dashboard" data-method="index" data-type="list">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-list">LIST</div>
+          <h4>Dashboard</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">index</div>
+          <div class="diagram-description">Retrieves a collection of resources from DashboardController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">KpiScore</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_DashboardController-index.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+          
+      <div class="diagram-card" data-controller="DashboardKaryawan" data-method="index" data-type="list">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-list">LIST</div>
+          <h4>DashboardKaryawan</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">index</div>
+          <div class="diagram-description">Retrieves a collection of resources from DashboardKaryawanController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">KpiScore</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_DashboardKaryawanController-index.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+          
+      <div class="diagram-card" data-controller="Evaluation" data-method="index" data-type="list">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-list">LIST</div>
+          <h4>Evaluation</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">index</div>
+          <div class="diagram-description">Retrieves a collection of resources from EvaluationController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            
+            <span style="font-style: italic; opacity: 0.7;">No models</span>
+          </div>
+          <div class="diagram-actions">
+            <a href="view_EvaluationController-index.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+          
+      <div class="diagram-card" data-controller="Karyawan" data-method="index" data-type="list">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-list">LIST</div>
+          <h4>Karyawan</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">index</div>
+          <div class="diagram-description">Retrieves a collection of resources from KaryawanController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">Karyawan</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_KaryawanController-index.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+          
+      <div class="diagram-card" data-controller="KpiCategory" data-method="index" data-type="list">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-list">LIST</div>
+          <h4>KpiCategory</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">index</div>
+          <div class="diagram-description">Retrieves a collection of resources from KpiCategoryController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">KpiCategory</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_KpiCategoryController-index.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+          
+      <div class="diagram-card" data-controller="KpiIndicator" data-method="index" data-type="list">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-list">LIST</div>
+          <h4>KpiIndicator</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">index</div>
+          <div class="diagram-description">Retrieves a collection of resources from KpiIndicatorController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">KpiCategory</span> <span class="model-tag">KpiIndicator</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_KpiIndicatorController-index.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+          
+      <div class="diagram-card" data-controller="KpiScore" data-method="index" data-type="list">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-list">LIST</div>
+          <h4>KpiScore</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">index</div>
+          <div class="diagram-description">Retrieves a collection of resources from KpiScoreController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">Karyawan</span> <span class="model-tag">KpiScore</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_KpiScoreController-index.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+          
+      <div class="diagram-card" data-controller="KpiSummary" data-method="index" data-type="list">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-list">LIST</div>
+          <h4>KpiSummary</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">index</div>
+          <div class="diagram-description">Retrieves a collection of resources from KpiSummaryController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            
+            <span style="font-style: italic; opacity: 0.7;">No models</span>
+          </div>
+          <div class="diagram-actions">
+            <a href="view_KpiSummaryController-index.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+          
+      <div class="diagram-card" data-controller="User" data-method="index" data-type="list">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-list">LIST</div>
+          <h4>User</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">index</div>
+          <div class="diagram-description">Retrieves a collection of resources from UserController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">User</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_UserController-index.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+        </div>
+      </div>
+      
+      
+      <div class="type-section">
+        <h3>Show Operations (3)</h3>
+        <div class="diagram-grid">
+          
+      <div class="diagram-card" data-controller="Karyawan" data-method="show" data-type="show">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-show">SHOW</div>
+          <h4>Karyawan</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">show</div>
+          <div class="diagram-description">Retrieves a specific resource from KaryawanController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            
+            <span style="font-style: italic; opacity: 0.7;">No models</span>
+          </div>
+          <div class="diagram-actions">
+            <a href="view_KaryawanController-show.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+          
+      <div class="diagram-card" data-controller="KpiScore" data-method="show" data-type="show">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-show">SHOW</div>
+          <h4>KpiScore</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">show</div>
+          <div class="diagram-description">Retrieves a specific resource from KpiScoreController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            
+            <span style="font-style: italic; opacity: 0.7;">No models</span>
+          </div>
+          <div class="diagram-actions">
+            <a href="view_KpiScoreController-show.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+          
+      <div class="diagram-card" data-controller="KpiSummary" data-method="show" data-type="show">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-show">SHOW</div>
+          <h4>KpiSummary</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">show</div>
+          <div class="diagram-description">Retrieves a specific resource from KpiSummaryController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">Karyawan</span> <span class="model-tag">KpiScore</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_KpiSummaryController-show.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+        </div>
+      </div>
+      
+      
+      <div class="type-section">
+        <h3>Create Operations (14)</h3>
+        <div class="diagram-grid">
+          
+      <div class="diagram-card" data-controller="AdminUser" data-method="create" data-type="create">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-create">CREATE</div>
+          <h4>AdminUser</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">create</div>
+          <div class="diagram-description">Creates a new resource in AdminUserController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            
+            <span style="font-style: italic; opacity: 0.7;">No models</span>
+          </div>
+          <div class="diagram-actions">
+            <a href="view_AdminUserController-create.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+          
+      <div class="diagram-card" data-controller="AdminUser" data-method="store" data-type="create">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-create">CREATE</div>
+          <h4>AdminUser</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">store</div>
+          <div class="diagram-description">Creates a new resource in AdminUserController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">User</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_AdminUserController-store.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+          
+      <div class="diagram-card" data-controller="Karyawan" data-method="create" data-type="create">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-create">CREATE</div>
+          <h4>Karyawan</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">create</div>
+          <div class="diagram-description">Creates a new resource in KaryawanController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            
+            <span style="font-style: italic; opacity: 0.7;">No models</span>
+          </div>
+          <div class="diagram-actions">
+            <a href="view_KaryawanController-create.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+          
+      <div class="diagram-card" data-controller="Karyawan" data-method="store" data-type="create">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-create">CREATE</div>
+          <h4>Karyawan</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">store</div>
+          <div class="diagram-description">Creates a new resource in KaryawanController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">Karyawan</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_KaryawanController-store.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+          
+      <div class="diagram-card" data-controller="KpiCategory" data-method="create" data-type="create">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-create">CREATE</div>
+          <h4>KpiCategory</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">create</div>
+          <div class="diagram-description">Creates a new resource in KpiCategoryController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            
+            <span style="font-style: italic; opacity: 0.7;">No models</span>
+          </div>
+          <div class="diagram-actions">
+            <a href="view_KpiCategoryController-create.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+          
+      <div class="diagram-card" data-controller="KpiCategory" data-method="store" data-type="create">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-create">CREATE</div>
+          <h4>KpiCategory</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">store</div>
+          <div class="diagram-description">Creates a new resource in KpiCategoryController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">KpiCategory</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_KpiCategoryController-store.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+          
+      <div class="diagram-card" data-controller="KpiIndicator" data-method="create" data-type="create">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-create">CREATE</div>
+          <h4>KpiIndicator</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">create</div>
+          <div class="diagram-description">Creates a new resource in KpiIndicatorController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">KpiCategory</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_KpiIndicatorController-create.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+          
+      <div class="diagram-card" data-controller="KpiIndicator" data-method="store" data-type="create">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-create">CREATE</div>
+          <h4>KpiIndicator</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">store</div>
+          <div class="diagram-description">Creates a new resource in KpiIndicatorController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">KpiIndicator</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_KpiIndicatorController-store.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+          
+      <div class="diagram-card" data-controller="KpiScore" data-method="create" data-type="create">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-create">CREATE</div>
+          <h4>KpiScore</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">create</div>
+          <div class="diagram-description">Creates a new resource in KpiScoreController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">Karyawan</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_KpiScoreController-create.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+          
+      <div class="diagram-card" data-controller="KpiScore" data-method="create" data-type="create">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-create">CREATE</div>
+          <h4>KpiScore</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">create</div>
+          <div class="diagram-description">Creates a new resource in KpiScoreController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">Karyawan</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_KpiScoreController-create.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+          
+      <div class="diagram-card" data-controller="KpiScore" data-method="store" data-type="create">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-create">CREATE</div>
+          <h4>KpiScore</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">store</div>
+          <div class="diagram-description">Creates a new resource in KpiScoreController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">Karyawan</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_KpiScoreController-store.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+          
+      <div class="diagram-card" data-controller="KpiScore" data-method="store" data-type="create">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-create">CREATE</div>
+          <h4>KpiScore</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">store</div>
+          <div class="diagram-description">Creates a new resource in KpiScoreController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">Karyawan</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_KpiScoreController-store.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+          
+      <div class="diagram-card" data-controller="User" data-method="create" data-type="create">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-create">CREATE</div>
+          <h4>User</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">create</div>
+          <div class="diagram-description">Creates a new resource in UserController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">Karyawan</span> <span class="model-tag">User</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_UserController-create.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+          
+      <div class="diagram-card" data-controller="User" data-method="store" data-type="create">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-create">CREATE</div>
+          <h4>User</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">store</div>
+          <div class="diagram-description">Creates a new resource in UserController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">User</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_UserController-store.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+        </div>
+      </div>
+      
+      
+      <div class="type-section">
+        <h3>Update Operations (10)</h3>
+        <div class="diagram-grid">
+          
+      <div class="diagram-card" data-controller="Karyawan" data-method="edit" data-type="update">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-update">UPDATE</div>
+          <h4>Karyawan</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">edit</div>
+          <div class="diagram-description">Updates an existing resource in KaryawanController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            
+            <span style="font-style: italic; opacity: 0.7;">No models</span>
+          </div>
+          <div class="diagram-actions">
+            <a href="view_KaryawanController-edit.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+          
+      <div class="diagram-card" data-controller="Karyawan" data-method="update" data-type="update">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-update">UPDATE</div>
+          <h4>Karyawan</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">update</div>
+          <div class="diagram-description">Updates an existing resource in KaryawanController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            
+            <span style="font-style: italic; opacity: 0.7;">No models</span>
+          </div>
+          <div class="diagram-actions">
+            <a href="view_KaryawanController-update.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+          
+      <div class="diagram-card" data-controller="KpiCategory" data-method="edit" data-type="update">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-update">UPDATE</div>
+          <h4>KpiCategory</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">edit</div>
+          <div class="diagram-description">Updates an existing resource in KpiCategoryController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">KpiCategory</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_KpiCategoryController-edit.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+          
+      <div class="diagram-card" data-controller="KpiCategory" data-method="update" data-type="update">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-update">UPDATE</div>
+          <h4>KpiCategory</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">update</div>
+          <div class="diagram-description">Updates an existing resource in KpiCategoryController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">KpiCategory</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_KpiCategoryController-update.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+          
+      <div class="diagram-card" data-controller="KpiIndicator" data-method="edit" data-type="update">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-update">UPDATE</div>
+          <h4>KpiIndicator</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">edit</div>
+          <div class="diagram-description">Updates an existing resource in KpiIndicatorController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">KpiCategory</span> <span class="model-tag">KpiIndicator</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_KpiIndicatorController-edit.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+          
+      <div class="diagram-card" data-controller="KpiIndicator" data-method="update" data-type="update">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-update">UPDATE</div>
+          <h4>KpiIndicator</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">update</div>
+          <div class="diagram-description">Updates an existing resource in KpiIndicatorController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">KpiIndicator</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_KpiIndicatorController-update.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+          
+      <div class="diagram-card" data-controller="KpiScore" data-method="edit" data-type="update">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-update">UPDATE</div>
+          <h4>KpiScore</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">edit</div>
+          <div class="diagram-description">Updates an existing resource in KpiScoreController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">Karyawan</span> <span class="model-tag">KpiIndicator</span> <span class="model-tag">KpiScore</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_KpiScoreController-edit.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+          
+      <div class="diagram-card" data-controller="KpiScore" data-method="update" data-type="update">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-update">UPDATE</div>
+          <h4>KpiScore</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">update</div>
+          <div class="diagram-description">Updates an existing resource in KpiScoreController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">KpiScore</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_KpiScoreController-update.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+          
+      <div class="diagram-card" data-controller="User" data-method="edit" data-type="update">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-update">UPDATE</div>
+          <h4>User</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">edit</div>
+          <div class="diagram-description">Updates an existing resource in UserController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            
+            <span style="font-style: italic; opacity: 0.7;">No models</span>
+          </div>
+          <div class="diagram-actions">
+            <a href="view_UserController-edit.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+          
+      <div class="diagram-card" data-controller="User" data-method="update" data-type="update">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-update">UPDATE</div>
+          <h4>User</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">update</div>
+          <div class="diagram-description">Updates an existing resource in UserController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            
+            <span style="font-style: italic; opacity: 0.7;">No models</span>
+          </div>
+          <div class="diagram-actions">
+            <a href="view_UserController-update.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+        </div>
+      </div>
+      
+      
+      <div class="type-section">
+        <h3>Delete Operations (6)</h3>
+        <div class="diagram-grid">
+          
+      <div class="diagram-card" data-controller="Karyawan" data-method="destroy" data-type="delete">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-delete">DELETE</div>
+          <h4>Karyawan</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">destroy</div>
+          <div class="diagram-description">Removes a resource from KaryawanController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            
+            <span style="font-style: italic; opacity: 0.7;">No models</span>
+          </div>
+          <div class="diagram-actions">
+            <a href="view_KaryawanController-destroy.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+          
+      <div class="diagram-card" data-controller="KpiCategory" data-method="destroy" data-type="delete">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-delete">DELETE</div>
+          <h4>KpiCategory</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">destroy</div>
+          <div class="diagram-description">Removes a resource from KpiCategoryController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            
+            <span style="font-style: italic; opacity: 0.7;">No models</span>
+          </div>
+          <div class="diagram-actions">
+            <a href="view_KpiCategoryController-destroy.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+          
+      <div class="diagram-card" data-controller="KpiIndicator" data-method="destroy" data-type="delete">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-delete">DELETE</div>
+          <h4>KpiIndicator</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">destroy</div>
+          <div class="diagram-description">Removes a resource from KpiIndicatorController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            
+            <span style="font-style: italic; opacity: 0.7;">No models</span>
+          </div>
+          <div class="diagram-actions">
+            <a href="view_KpiIndicatorController-destroy.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+          
+      <div class="diagram-card" data-controller="KpiScore" data-method="destroy" data-type="delete">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-delete">DELETE</div>
+          <h4>KpiScore</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">destroy</div>
+          <div class="diagram-description">Removes a resource from KpiScoreController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">KpiScore</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_KpiScoreController-destroy.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+          
+      <div class="diagram-card" data-controller="KpiSummary" data-method="destroy" data-type="delete">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-delete">DELETE</div>
+          <h4>KpiSummary</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">destroy</div>
+          <div class="diagram-description">Removes a resource from KpiSummaryController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">KpiScore</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_KpiSummaryController-destroy.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+          
+      <div class="diagram-card" data-controller="User" data-method="destroy" data-type="delete">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-delete">DELETE</div>
+          <h4>User</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">destroy</div>
+          <div class="diagram-description">Removes a resource from UserController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            
+            <span style="font-style: italic; opacity: 0.7;">No models</span>
+          </div>
+          <div class="diagram-actions">
+            <a href="view_UserController-destroy.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+        </div>
+      </div>
+      
+      
+      <div class="type-section">
+        <h3>Generic Operations (8)</h3>
+        <div class="diagram-grid">
+          
+      <div class="diagram-card" data-controller="Chart" data-method="getChartData" data-type="generic">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-generic">GENERIC</div>
+          <h4>Chart</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">getChartData</div>
+          <div class="diagram-description">Handles getChartData operation in ChartController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">Karyawan</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_ChartController-getChartData.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+          
+      <div class="diagram-card" data-controller="Chart" data-method="chartDetail" data-type="generic">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-generic">GENERIC</div>
+          <h4>Chart</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">chartDetail</div>
+          <div class="diagram-description">Handles chartDetail operation in ChartController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            
+            <span style="font-style: italic; opacity: 0.7;">No models</span>
+          </div>
+          <div class="diagram-actions">
+            <a href="view_ChartController-chartDetail.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+          
+      <div class="diagram-card" data-controller="Chart" data-method="semesterForLeader" data-type="generic">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-generic">GENERIC</div>
+          <h4>Chart</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">semesterForLeader</div>
+          <div class="diagram-description">Handles semesterForLeader operation in ChartController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">KpiScore</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_ChartController-semesterForLeader.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+          
+      <div class="diagram-card" data-controller="Chart" data-method="detailForLeader" data-type="generic">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-generic">GENERIC</div>
+          <h4>Chart</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">detailForLeader</div>
+          <div class="diagram-description">Handles detailForLeader operation in ChartController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">KpiScore</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_ChartController-detailForLeader.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+          
+      <div class="diagram-card" data-controller="KpiScore" data-method="visualisasi" data-type="generic">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-generic">GENERIC</div>
+          <h4>KpiScore</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">visualisasi</div>
+          <div class="diagram-description">Handles visualisasi operation in KpiScoreController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">KpiScore</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_KpiScoreController-visualisasi.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+          
+      <div class="diagram-card" data-controller="KpiSummary" data-method="summary" data-type="generic">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-generic">GENERIC</div>
+          <h4>KpiSummary</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">summary</div>
+          <div class="diagram-description">Handles summary operation in KpiSummaryController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">KpiScore</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_KpiSummaryController-summary.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+          
+      <div class="diagram-card" data-controller="KpiSummary" data-method="getSemesterSummary" data-type="generic">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-generic">GENERIC</div>
+          <h4>KpiSummary</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">getSemesterSummary</div>
+          <div class="diagram-description">Handles getSemesterSummary operation in KpiSummaryController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">KpiScore</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_KpiSummaryController-getSemesterSummary.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+          
+      <div class="diagram-card" data-controller="KpiSummary" data-method="getSemesterDetail" data-type="generic">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-generic">GENERIC</div>
+          <h4>KpiSummary</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">getSemesterDetail</div>
+          <div class="diagram-description">Handles getSemesterDetail operation in KpiSummaryController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">KpiScore</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_KpiSummaryController-getSemesterDetail.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+        </div>
+      </div>
+      
+    </div>
+    
+    <div id="by-controller" class="tab-content">
+      
+      <div class="controller-section">
+        <h3>AdminUser Controller (2)</h3>
+        <div class="diagram-grid">
+          
+      <div class="diagram-card" data-controller="AdminUser" data-method="create" data-type="create">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-create">CREATE</div>
+          <h4>AdminUser</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">create</div>
+          <div class="diagram-description">Creates a new resource in AdminUserController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            
+            <span style="font-style: italic; opacity: 0.7;">No models</span>
+          </div>
+          <div class="diagram-actions">
+            <a href="view_AdminUserController-create.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+          
+      <div class="diagram-card" data-controller="AdminUser" data-method="store" data-type="create">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-create">CREATE</div>
+          <h4>AdminUser</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">store</div>
+          <div class="diagram-description">Creates a new resource in AdminUserController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">User</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_AdminUserController-store.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+        </div>
+      </div>
+      
+      
+      <div class="controller-section">
+        <h3>Chart Controller (5)</h3>
+        <div class="diagram-grid">
+          
+      <div class="diagram-card" data-controller="Chart" data-method="index" data-type="list">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-list">LIST</div>
+          <h4>Chart</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">index</div>
+          <div class="diagram-description">Retrieves a collection of resources from ChartController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            
+            <span style="font-style: italic; opacity: 0.7;">No models</span>
+          </div>
+          <div class="diagram-actions">
+            <a href="view_ChartController-index.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+          
+      <div class="diagram-card" data-controller="Chart" data-method="getChartData" data-type="generic">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-generic">GENERIC</div>
+          <h4>Chart</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">getChartData</div>
+          <div class="diagram-description">Handles getChartData operation in ChartController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">Karyawan</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_ChartController-getChartData.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+          
+      <div class="diagram-card" data-controller="Chart" data-method="chartDetail" data-type="generic">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-generic">GENERIC</div>
+          <h4>Chart</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">chartDetail</div>
+          <div class="diagram-description">Handles chartDetail operation in ChartController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            
+            <span style="font-style: italic; opacity: 0.7;">No models</span>
+          </div>
+          <div class="diagram-actions">
+            <a href="view_ChartController-chartDetail.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+          
+      <div class="diagram-card" data-controller="Chart" data-method="semesterForLeader" data-type="generic">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-generic">GENERIC</div>
+          <h4>Chart</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">semesterForLeader</div>
+          <div class="diagram-description">Handles semesterForLeader operation in ChartController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">KpiScore</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_ChartController-semesterForLeader.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+          
+      <div class="diagram-card" data-controller="Chart" data-method="detailForLeader" data-type="generic">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-generic">GENERIC</div>
+          <h4>Chart</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">detailForLeader</div>
+          <div class="diagram-description">Handles detailForLeader operation in ChartController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">KpiScore</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_ChartController-detailForLeader.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+        </div>
+      </div>
+      
+      
+      
+      <div class="controller-section">
+        <h3>Dashboard Controller (1)</h3>
+        <div class="diagram-grid">
+          
+      <div class="diagram-card" data-controller="Dashboard" data-method="index" data-type="list">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-list">LIST</div>
+          <h4>Dashboard</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">index</div>
+          <div class="diagram-description">Retrieves a collection of resources from DashboardController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">KpiScore</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_DashboardController-index.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+        </div>
+      </div>
+      
+      
+      <div class="controller-section">
+        <h3>DashboardKaryawan Controller (1)</h3>
+        <div class="diagram-grid">
+          
+      <div class="diagram-card" data-controller="DashboardKaryawan" data-method="index" data-type="list">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-list">LIST</div>
+          <h4>DashboardKaryawan</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">index</div>
+          <div class="diagram-description">Retrieves a collection of resources from DashboardKaryawanController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">KpiScore</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_DashboardKaryawanController-index.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+        </div>
+      </div>
+      
+      
+      <div class="controller-section">
+        <h3>Evaluation Controller (1)</h3>
+        <div class="diagram-grid">
+          
+      <div class="diagram-card" data-controller="Evaluation" data-method="index" data-type="list">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-list">LIST</div>
+          <h4>Evaluation</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">index</div>
+          <div class="diagram-description">Retrieves a collection of resources from EvaluationController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            
+            <span style="font-style: italic; opacity: 0.7;">No models</span>
+          </div>
+          <div class="diagram-actions">
+            <a href="view_EvaluationController-index.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+        </div>
+      </div>
+      
+      
+      <div class="controller-section">
+        <h3>Karyawan Controller (7)</h3>
+        <div class="diagram-grid">
+          
+      <div class="diagram-card" data-controller="Karyawan" data-method="index" data-type="list">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-list">LIST</div>
+          <h4>Karyawan</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">index</div>
+          <div class="diagram-description">Retrieves a collection of resources from KaryawanController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">Karyawan</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_KaryawanController-index.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+          
+      <div class="diagram-card" data-controller="Karyawan" data-method="create" data-type="create">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-create">CREATE</div>
+          <h4>Karyawan</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">create</div>
+          <div class="diagram-description">Creates a new resource in KaryawanController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            
+            <span style="font-style: italic; opacity: 0.7;">No models</span>
+          </div>
+          <div class="diagram-actions">
+            <a href="view_KaryawanController-create.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+          
+      <div class="diagram-card" data-controller="Karyawan" data-method="store" data-type="create">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-create">CREATE</div>
+          <h4>Karyawan</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">store</div>
+          <div class="diagram-description">Creates a new resource in KaryawanController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">Karyawan</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_KaryawanController-store.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+          
+      <div class="diagram-card" data-controller="Karyawan" data-method="show" data-type="show">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-show">SHOW</div>
+          <h4>Karyawan</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">show</div>
+          <div class="diagram-description">Retrieves a specific resource from KaryawanController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            
+            <span style="font-style: italic; opacity: 0.7;">No models</span>
+          </div>
+          <div class="diagram-actions">
+            <a href="view_KaryawanController-show.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+          
+      <div class="diagram-card" data-controller="Karyawan" data-method="edit" data-type="update">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-update">UPDATE</div>
+          <h4>Karyawan</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">edit</div>
+          <div class="diagram-description">Updates an existing resource in KaryawanController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            
+            <span style="font-style: italic; opacity: 0.7;">No models</span>
+          </div>
+          <div class="diagram-actions">
+            <a href="view_KaryawanController-edit.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+          
+      <div class="diagram-card" data-controller="Karyawan" data-method="update" data-type="update">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-update">UPDATE</div>
+          <h4>Karyawan</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">update</div>
+          <div class="diagram-description">Updates an existing resource in KaryawanController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            
+            <span style="font-style: italic; opacity: 0.7;">No models</span>
+          </div>
+          <div class="diagram-actions">
+            <a href="view_KaryawanController-update.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+          
+      <div class="diagram-card" data-controller="Karyawan" data-method="destroy" data-type="delete">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-delete">DELETE</div>
+          <h4>Karyawan</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">destroy</div>
+          <div class="diagram-description">Removes a resource from KaryawanController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            
+            <span style="font-style: italic; opacity: 0.7;">No models</span>
+          </div>
+          <div class="diagram-actions">
+            <a href="view_KaryawanController-destroy.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+        </div>
+      </div>
+      
+      
+      <div class="controller-section">
+        <h3>KpiCategory Controller (6)</h3>
+        <div class="diagram-grid">
+          
+      <div class="diagram-card" data-controller="KpiCategory" data-method="index" data-type="list">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-list">LIST</div>
+          <h4>KpiCategory</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">index</div>
+          <div class="diagram-description">Retrieves a collection of resources from KpiCategoryController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">KpiCategory</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_KpiCategoryController-index.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+          
+      <div class="diagram-card" data-controller="KpiCategory" data-method="create" data-type="create">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-create">CREATE</div>
+          <h4>KpiCategory</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">create</div>
+          <div class="diagram-description">Creates a new resource in KpiCategoryController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            
+            <span style="font-style: italic; opacity: 0.7;">No models</span>
+          </div>
+          <div class="diagram-actions">
+            <a href="view_KpiCategoryController-create.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+          
+      <div class="diagram-card" data-controller="KpiCategory" data-method="store" data-type="create">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-create">CREATE</div>
+          <h4>KpiCategory</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">store</div>
+          <div class="diagram-description">Creates a new resource in KpiCategoryController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">KpiCategory</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_KpiCategoryController-store.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+          
+      <div class="diagram-card" data-controller="KpiCategory" data-method="edit" data-type="update">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-update">UPDATE</div>
+          <h4>KpiCategory</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">edit</div>
+          <div class="diagram-description">Updates an existing resource in KpiCategoryController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">KpiCategory</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_KpiCategoryController-edit.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+          
+      <div class="diagram-card" data-controller="KpiCategory" data-method="update" data-type="update">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-update">UPDATE</div>
+          <h4>KpiCategory</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">update</div>
+          <div class="diagram-description">Updates an existing resource in KpiCategoryController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">KpiCategory</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_KpiCategoryController-update.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+          
+      <div class="diagram-card" data-controller="KpiCategory" data-method="destroy" data-type="delete">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-delete">DELETE</div>
+          <h4>KpiCategory</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">destroy</div>
+          <div class="diagram-description">Removes a resource from KpiCategoryController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            
+            <span style="font-style: italic; opacity: 0.7;">No models</span>
+          </div>
+          <div class="diagram-actions">
+            <a href="view_KpiCategoryController-destroy.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+        </div>
+      </div>
+      
+      
+      <div class="controller-section">
+        <h3>KpiIndicator Controller (6)</h3>
+        <div class="diagram-grid">
+          
+      <div class="diagram-card" data-controller="KpiIndicator" data-method="index" data-type="list">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-list">LIST</div>
+          <h4>KpiIndicator</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">index</div>
+          <div class="diagram-description">Retrieves a collection of resources from KpiIndicatorController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">KpiCategory</span> <span class="model-tag">KpiIndicator</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_KpiIndicatorController-index.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+          
+      <div class="diagram-card" data-controller="KpiIndicator" data-method="create" data-type="create">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-create">CREATE</div>
+          <h4>KpiIndicator</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">create</div>
+          <div class="diagram-description">Creates a new resource in KpiIndicatorController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">KpiCategory</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_KpiIndicatorController-create.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+          
+      <div class="diagram-card" data-controller="KpiIndicator" data-method="store" data-type="create">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-create">CREATE</div>
+          <h4>KpiIndicator</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">store</div>
+          <div class="diagram-description">Creates a new resource in KpiIndicatorController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">KpiIndicator</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_KpiIndicatorController-store.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+          
+      <div class="diagram-card" data-controller="KpiIndicator" data-method="edit" data-type="update">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-update">UPDATE</div>
+          <h4>KpiIndicator</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">edit</div>
+          <div class="diagram-description">Updates an existing resource in KpiIndicatorController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">KpiCategory</span> <span class="model-tag">KpiIndicator</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_KpiIndicatorController-edit.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+          
+      <div class="diagram-card" data-controller="KpiIndicator" data-method="update" data-type="update">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-update">UPDATE</div>
+          <h4>KpiIndicator</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">update</div>
+          <div class="diagram-description">Updates an existing resource in KpiIndicatorController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">KpiIndicator</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_KpiIndicatorController-update.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+          
+      <div class="diagram-card" data-controller="KpiIndicator" data-method="destroy" data-type="delete">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-delete">DELETE</div>
+          <h4>KpiIndicator</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">destroy</div>
+          <div class="diagram-description">Removes a resource from KpiIndicatorController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            
+            <span style="font-style: italic; opacity: 0.7;">No models</span>
+          </div>
+          <div class="diagram-actions">
+            <a href="view_KpiIndicatorController-destroy.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+        </div>
+      </div>
+      
+      
+      <div class="controller-section">
+        <h3>KpiScore Controller (10)</h3>
+        <div class="diagram-grid">
+          
+      <div class="diagram-card" data-controller="KpiScore" data-method="index" data-type="list">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-list">LIST</div>
+          <h4>KpiScore</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">index</div>
+          <div class="diagram-description">Retrieves a collection of resources from KpiScoreController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">Karyawan</span> <span class="model-tag">KpiScore</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_KpiScoreController-index.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+          
+      <div class="diagram-card" data-controller="KpiScore" data-method="visualisasi" data-type="generic">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-generic">GENERIC</div>
+          <h4>KpiScore</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">visualisasi</div>
+          <div class="diagram-description">Handles visualisasi operation in KpiScoreController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">KpiScore</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_KpiScoreController-visualisasi.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+          
+      <div class="diagram-card" data-controller="KpiScore" data-method="create" data-type="create">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-create">CREATE</div>
+          <h4>KpiScore</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">create</div>
+          <div class="diagram-description">Creates a new resource in KpiScoreController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">Karyawan</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_KpiScoreController-create.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+          
+      <div class="diagram-card" data-controller="KpiScore" data-method="create" data-type="create">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-create">CREATE</div>
+          <h4>KpiScore</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">create</div>
+          <div class="diagram-description">Creates a new resource in KpiScoreController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">Karyawan</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_KpiScoreController-create.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+          
+      <div class="diagram-card" data-controller="KpiScore" data-method="edit" data-type="update">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-update">UPDATE</div>
+          <h4>KpiScore</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">edit</div>
+          <div class="diagram-description">Updates an existing resource in KpiScoreController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">Karyawan</span> <span class="model-tag">KpiIndicator</span> <span class="model-tag">KpiScore</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_KpiScoreController-edit.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+          
+      <div class="diagram-card" data-controller="KpiScore" data-method="store" data-type="create">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-create">CREATE</div>
+          <h4>KpiScore</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">store</div>
+          <div class="diagram-description">Creates a new resource in KpiScoreController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">Karyawan</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_KpiScoreController-store.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+          
+      <div class="diagram-card" data-controller="KpiScore" data-method="store" data-type="create">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-create">CREATE</div>
+          <h4>KpiScore</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">store</div>
+          <div class="diagram-description">Creates a new resource in KpiScoreController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">Karyawan</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_KpiScoreController-store.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+          
+      <div class="diagram-card" data-controller="KpiScore" data-method="show" data-type="show">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-show">SHOW</div>
+          <h4>KpiScore</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">show</div>
+          <div class="diagram-description">Retrieves a specific resource from KpiScoreController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            
+            <span style="font-style: italic; opacity: 0.7;">No models</span>
+          </div>
+          <div class="diagram-actions">
+            <a href="view_KpiScoreController-show.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+          
+      <div class="diagram-card" data-controller="KpiScore" data-method="update" data-type="update">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-update">UPDATE</div>
+          <h4>KpiScore</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">update</div>
+          <div class="diagram-description">Updates an existing resource in KpiScoreController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">KpiScore</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_KpiScoreController-update.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+          
+      <div class="diagram-card" data-controller="KpiScore" data-method="destroy" data-type="delete">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-delete">DELETE</div>
+          <h4>KpiScore</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">destroy</div>
+          <div class="diagram-description">Removes a resource from KpiScoreController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">KpiScore</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_KpiScoreController-destroy.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+        </div>
+      </div>
+      
+      
+      <div class="controller-section">
+        <h3>KpiSummary Controller (6)</h3>
+        <div class="diagram-grid">
+          
+      <div class="diagram-card" data-controller="KpiSummary" data-method="index" data-type="list">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-list">LIST</div>
+          <h4>KpiSummary</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">index</div>
+          <div class="diagram-description">Retrieves a collection of resources from KpiSummaryController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            
+            <span style="font-style: italic; opacity: 0.7;">No models</span>
+          </div>
+          <div class="diagram-actions">
+            <a href="view_KpiSummaryController-index.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+          
+      <div class="diagram-card" data-controller="KpiSummary" data-method="show" data-type="show">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-show">SHOW</div>
+          <h4>KpiSummary</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">show</div>
+          <div class="diagram-description">Retrieves a specific resource from KpiSummaryController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">Karyawan</span> <span class="model-tag">KpiScore</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_KpiSummaryController-show.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+          
+      <div class="diagram-card" data-controller="KpiSummary" data-method="summary" data-type="generic">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-generic">GENERIC</div>
+          <h4>KpiSummary</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">summary</div>
+          <div class="diagram-description">Handles summary operation in KpiSummaryController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">KpiScore</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_KpiSummaryController-summary.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+          
+      <div class="diagram-card" data-controller="KpiSummary" data-method="destroy" data-type="delete">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-delete">DELETE</div>
+          <h4>KpiSummary</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">destroy</div>
+          <div class="diagram-description">Removes a resource from KpiSummaryController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">KpiScore</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_KpiSummaryController-destroy.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+          
+      <div class="diagram-card" data-controller="KpiSummary" data-method="getSemesterSummary" data-type="generic">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-generic">GENERIC</div>
+          <h4>KpiSummary</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">getSemesterSummary</div>
+          <div class="diagram-description">Handles getSemesterSummary operation in KpiSummaryController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">KpiScore</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_KpiSummaryController-getSemesterSummary.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+          
+      <div class="diagram-card" data-controller="KpiSummary" data-method="getSemesterDetail" data-type="generic">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-generic">GENERIC</div>
+          <h4>KpiSummary</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">getSemesterDetail</div>
+          <div class="diagram-description">Handles getSemesterDetail operation in KpiSummaryController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">KpiScore</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_KpiSummaryController-getSemesterDetail.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+        </div>
+      </div>
+      
+      
+      <div class="controller-section">
+        <h3>User Controller (6)</h3>
+        <div class="diagram-grid">
+          
+      <div class="diagram-card" data-controller="User" data-method="index" data-type="list">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-list">LIST</div>
+          <h4>User</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">index</div>
+          <div class="diagram-description">Retrieves a collection of resources from UserController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">User</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_UserController-index.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+          
+      <div class="diagram-card" data-controller="User" data-method="create" data-type="create">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-create">CREATE</div>
+          <h4>User</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">create</div>
+          <div class="diagram-description">Creates a new resource in UserController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">Karyawan</span> <span class="model-tag">User</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_UserController-create.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+          
+      <div class="diagram-card" data-controller="User" data-method="edit" data-type="update">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-update">UPDATE</div>
+          <h4>User</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">edit</div>
+          <div class="diagram-description">Updates an existing resource in UserController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            
+            <span style="font-style: italic; opacity: 0.7;">No models</span>
+          </div>
+          <div class="diagram-actions">
+            <a href="view_UserController-edit.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+          
+      <div class="diagram-card" data-controller="User" data-method="update" data-type="update">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-update">UPDATE</div>
+          <h4>User</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">update</div>
+          <div class="diagram-description">Updates an existing resource in UserController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            
+            <span style="font-style: italic; opacity: 0.7;">No models</span>
+          </div>
+          <div class="diagram-actions">
+            <a href="view_UserController-update.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+          
+      <div class="diagram-card" data-controller="User" data-method="store" data-type="create">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-create">CREATE</div>
+          <h4>User</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">store</div>
+          <div class="diagram-description">Creates a new resource in UserController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            <span class="model-tag">User</span>
+            
+          </div>
+          <div class="diagram-actions">
+            <a href="view_UserController-store.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+          
+      <div class="diagram-card" data-controller="User" data-method="destroy" data-type="delete">
+        <div class="diagram-header">
+          <div class="diagram-badge badge-delete">DELETE</div>
+          <h4>User</h4>
+        </div>
+        <div class="diagram-body">
+          <div class="diagram-title">destroy</div>
+          <div class="diagram-description">Removes a resource from UserController</div>
+        </div>
+        <div class="diagram-footer">
+          <div class="diagram-models">
+            
+            <span style="font-style: italic; opacity: 0.7;">No models</span>
+          </div>
+          <div class="diagram-actions">
+            <a href="view_UserController-destroy.html" class="action-btn view-btn" title="View Diagram">
+              <i class="fas fa-eye"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+  
+        </div>
+      </div>
+      
+    </div>
+  </main>
+  
+  <footer>
+    <p>Generated on 7/10/2025 at 12:36:37 PM</p>
+    <p>Sequence Diagram Generator for Laravel</p>
+  </footer>
+  
+  <script src="assets/script.js"></script>
+</body>
+</html>
+  

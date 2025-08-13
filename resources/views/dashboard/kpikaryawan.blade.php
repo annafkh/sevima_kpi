@@ -31,6 +31,26 @@
                     </div>
                 @endif
             <div class="overflow-x-auto bg-white rounded-lg shadow">
+                <form method="GET" class="mb-4 flex gap-4 items-end">
+                    <div>
+                        <label class="text-sm text-gray-700">Tahun</label>
+                        <select name="tahun" class="mt-1 px-2 py-1 border rounded">
+                            @for ($i = date('Y'); $i >= date('Y') - 5; $i--)
+                                <option value="{{ $i }}" {{ request('tahun') == $i ? 'selected' : '' }}>{{ $i }}</option>
+                            @endfor
+                        </select>
+                    </div>
+                    <div>
+                        <label class="text-sm text-gray-700">Semester</label>
+                        <select name="semester" class="mt-1 px-2 py-1 border rounded">
+                            <option value="1" {{ request('semester') == 1 ? 'selected' : '' }}>Semester 1</option>
+                            <option value="2" {{ request('semester') == 2 ? 'selected' : '' }}>Semester 2</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">
+                        Filter
+                    </button>
+                </form>                
                 <table class="w-full min-w-full text-sm text-gray-700">
                     <thead class="text-xs font-semibold text-gray-600 uppercase bg-gray-100">
                         <tr>

@@ -2,28 +2,31 @@
     <x-slot name="header">
         <h2 class="text-2xl font-bold leading-tight text-center text-gray-800">📋 Ringkasan KPI Karyawan</h2>
     </x-slot>
-    <button onclick="window.print()" class="px-4 py-2 text-black bg-blue-600 rounded-md hover:bg-blue-700 no-print">
-        Cetak Laporan
-    </button>
-   
-
-
-    <div class="py-6">
-        <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
-             <form method="GET" class="mb-6">
-    <div class="flex flex-wrap items-center gap-2">
-        <label for="year" class="text-sm font-semibold">Tahun:</label>
-        <input type="number" name="year" id="year" value="{{ request('year', now()->year) }}" class="px-2 py-1 border rounded">
-
-        <label for="semester" class="text-sm font-semibold">Semester:</label>
-        <select name="semester" id="semester" class="px-2 py-1 border rounded">
-            <option value="1" {{ request('semester') == 1 ? 'selected' : '' }}>Semester 1</option>
-            <option value="2" {{ request('semester') == 2 ? 'selected' : '' }}>Semester 2</option>
-        </select>
-
-        <button type="submit" class="px-3 py-1 text-black bg-blue-600 rounded hover:bg-blue-700">Tampilkan</button>
+<br>
+    <div class="flex flex-wrap items-center justify-between mb-6 gap-2 px-10 w-full">
+        <form method="GET" class="flex flex-wrap items-center gap-2">
+            <label for="year" class="text-sm font-semibold">Tahun:</label>
+            <input type="number" name="year" id="year" value="{{ request('year', now()->year) }}"
+                class="px-2 py-1 border rounded">
+    
+            <label for="semester" class="text-sm font-semibold">Semester:</label>
+            <select name="semester" id="semester" class="px-2 py-1 border rounded">
+                <option value="1" {{ request('semester') == 1 ? 'selected' : '' }}>Semester 1</option>
+                <option value="2" {{ request('semester') == 2 ? 'selected' : '' }}>Semester 2</option>
+            </select>
+    
+            <button type="submit" class="px-3 py-1 text-black bg-blue-600 rounded hover:bg-blue-700">
+                Tampilkan
+            </button>
+        </form>
+    
+        <button onclick="window.print()"
+            class="px-4 py-2 text-black bg-blue-600 rounded-md hover:bg-blue-700 no-print">
+            Cetak Laporan
+        </button>
     </div>
-</form>
+    
+
 
             {{-- Grafik --}}
             <div class="p-6 mb-10 bg-white rounded-lg shadow">
@@ -122,7 +125,6 @@
                     plugins: {
                         datalabels: {
                             anchor: 'end',
-                            
                             align: 'top',
                             color: '#000',
                             font: {

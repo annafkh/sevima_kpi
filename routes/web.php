@@ -14,8 +14,7 @@ use App\Http\Controllers\ChartController;
 use App\Http\Controllers\DashboardKaryawanController;
 use App\Http\Controllers\AdminUserController;
 use App\Http\Controllers\DashboardController;
-
-
+use App\Http\Controllers\ProgressTaskController;
 
 Route::get('/', function () {
     return redirect()->route('login');
@@ -44,6 +43,18 @@ Route::middleware(['auth', RoleMiddleware::class . ':hc,leader'])->group(functio
     Route::resource('kpi_scores', KpiScoreController::class);
      Route::delete('/kpi_scores/{id}', [KpiScoreController::class, 'destroy'])->name('kpi_scores.destroy');
 });
+Route::middleware(['auth'])->group(function () {
+    Route::get('/progress', [ProgressTaskController::class, 'index'])->name('progress.index');
+    Route::post('/progress', [ProgressTaskController::class, 'store'])->name('progress.store');
+    Route::post('/progress/nilai/{karyawan}', [ProgressTaskController::class, 'nilaiOtomatis'])->name('progress.nilaiOtomatis');
+    Route::get('/progress/{id}/edit', [ProgressTaskController::class, 'edit'])->name('progress.edit');
+    Route::delete('/progress/{id}', [ProgressTaskController::class, 'destroy'])->name('progress.destroy');
+    Route::put('/progress/{id}', [ProgressTaskController::class, 'update'])->name('progress.update');
+    Route::get('/pelanggaran/{id}/edit', [ProgressTaskController::class, 'editPelanggaran'])->name('pelanggaran.edit');
+    Route::put('/pelanggaran/{id}', [ProgressTaskController::class, 'updatePelanggaran'])->name('pelanggaran.update');
+    Route::delete('/pelanggaran/{id}', [ProgressTaskController::class, 'destroyPelanggaran'])->name('pelanggaran.destroy');
+});
+
 
 Route::middleware(['auth', RoleMiddleware::class . ':hc'])->group(function () {
     Route::resource('kpi_categories', KpiCategoryController::class);

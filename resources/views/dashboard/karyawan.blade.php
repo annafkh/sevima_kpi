@@ -131,7 +131,26 @@
 
             <!-- Grafik -->
             <div class="mt-12 bg-white p-6 rounded-xl shadow-lg">
-                <h3 class="text-xl font-semibold mb-4 text-gray-700">KPI Score Semester ({{ date('Y') }})</h3>
+                <h3 class="text-xl font-semibold mb-4 text-gray-700">KPI Score</h3>
+                <div class="flex flex-wrap items-center gap-4 mb-4">
+                    <div>
+                        <label for="tahun" class="text-sm text-gray-600">Tahun:</label>
+                        <select id="filterTahun" class="ml-2 px-3 py-1 border rounded-md shadow-sm focus:ring focus:ring-blue-300">
+                            @for ($i = date('Y'); $i >= date('Y') - 5; $i--)
+                                <option value="{{ $i }}">{{ $i }}</option>
+                            @endfor
+                        </select>
+                    </div>
+                
+                    <div>
+                        <label for="semester" class="text-sm text-gray-600">Semester:</label>
+                        <select id="filterSemester" class="ml-2 px-3 py-1 border rounded-md shadow-sm focus:ring focus:ring-blue-300">
+                            <option value="1">Semester 1</option>
+                            <option value="2">Semester 2</option>
+                        </select>
+                    </div>
+                </div>
+                
                 <canvas id="myChart" height="100"></canvas>
             </div>
         </main>
@@ -153,15 +172,22 @@
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            fetch('/chart-data')
+        let myChart;
+    
+        function fetchChartData(tahun, semester) {
+            fetch(`/chart-data?tahun=${tahun}&semester=${semester}`)
                 .then(response => response.json())
                 .then(data => {
                     const labels = data.map(item => item.nama);
                     const scores = data.map(item => parseFloat(item.avg_score));
     
                     const ctx = document.getElementById('myChart').getContext('2d');
-                    new Chart(ctx, {
+    
+                    if (myChart) {
+                        myChart.destroy();
+                    }
+    
+                    myChart = new Chart(ctx, {
                         type: 'bar',
                         data: {
                             labels: labels,
@@ -179,9 +205,7 @@
                                 y: {
                                     min: 1,
                                     max: 5,
-                                    ticks: {
-                                        stepSize: 1
-                                    }
+                                    ticks: { stepSize: 1 }
                                 }
                             }
                         }
@@ -190,8 +214,25 @@
                 .catch(error => {
                     console.error('Gagal ambil data chart:', error);
                 });
+        }
+    
+        document.addEventListener('DOMContentLoaded', function () {
+            const tahunSelect = document.getElementById('filterTahun');
+            const semesterSelect = document.getElementById('filterSemester');
+    
+            // Initial load
+            fetchChartData(tahunSelect.value, semesterSelect.value);
+    
+            // Update chart on filter change
+            tahunSelect.addEventListener('change', () => {
+                fetchChartData(tahunSelect.value, semesterSelect.value);
+            });
+    
+            semesterSelect.addEventListener('change', () => {
+                fetchChartData(tahunSelect.value, semesterSelect.value);
+            });
         });
-    </script>
+    </script>    
     
     
 </x-app-layout>

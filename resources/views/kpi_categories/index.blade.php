@@ -16,7 +16,10 @@
             @endif
 
             <!-- Tombol Tambah Kategori -->
-            <div class="flex justify-end mb-4">
+            <div class="flex justify-between mb-4">
+                <a href="{{ url()->previous() }}" class="px-4 py-2 font-bold text-white bg-gray-600 rounded shadow hover:bg-gray-700">
+                    ← Kembali
+                </a>
                 <a href="{{ route('kpi_categories.create') }}" class="px-4 py-2 font-bold text-black bg-blue-600 rounded shadow hover:bg-blue-700">
                     + Tambah Kategori KPI
                 </a>

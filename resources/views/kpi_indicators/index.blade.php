@@ -6,27 +6,27 @@
     <div class="py-6">
         <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
             
-            <!-- Notifikasi Sukses -->
             @if (session('success'))
                 <div class="mb-4 font-semibold text-green-600">
                     {{ session('success') }}
                 </div>
             @endif
 
-            <!-- Tombol Tambah KPI Indicator -->
-        <div class="flex justify-end mb-4">
-    <a 
-        href="{{ auth()->user()->role !== 'leader' ? route('kpi_indicators.create') : '#' }}" 
-        class="px-4 py-2 font-bold text-black rounded shadow 
-               {{ auth()->user()->role === 'leader' ? 'bg-gray-400 cursor-not-allowed' : 'bg-blue-600 hover:bg-blue-700' }}"
-        @if(auth()->user()->role === 'leader') onclick="return false;" @endif
-    >
-        + Tambah KPI Indicator
-    </a>
-</div>
+        <div class="flex justify-between mb-4">
+            <a href="{{ url()->previous() }}" class="px-4 py-2 font-bold text-white bg-gray-600 rounded shadow hover:bg-gray-700">
+                ← Kembali
+            </a>
+            <a href="{{ auth()->user()->role !== 'leader' ? route('kpi_indicators.create') : '#' }}" 
+                class="px-4 py-2 font-bold text-black rounded shadow 
+                    {{ auth()->user()->role === 'leader' ? 'bg-gray-400 cursor-not-allowed' : 'bg-blue-600 hover:bg-blue-700' }}"
+                @if(auth()->user()->role === 'leader') onclick="return false;" 
+                @endif
+            >
+                + Tambah KPI Indicator
+            </a>
+        </div>
 
 
-            <!-- Tabel KPI Indicator -->
             <div class="overflow-x-auto bg-white rounded-lg shadow">
                 <table class="w-full min-w-full text-sm text-gray-700">
                     <thead class="text-xs font-semibold text-gray-600 uppercase bg-gray-100">

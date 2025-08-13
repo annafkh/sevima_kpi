@@ -67,8 +67,9 @@
                 @php
                     $navItems = [
                         ['label' => 'KPI Indikator', 'route' => 'kpi_indicators.*', 'icon' => 'fas fa-bolt', 'href' => route('kpi_indicators.index')],
-                        ['label' => 'Kategori KPI', 'route' => 'kpi_categories.*', 'icon' => 'fas fa-th-list', 'href' => route('kpi_categories.index')],
+                        ['label' => 'Progress Pekerjaan', 'route' => 'progress.*', 'icon' => 'fas fa-tasks', 'href' => route('progress.index')],
                         ['label' => 'KPI Score', 'route' => 'kpi.summary', 'icon' => 'fas fa-chart-bar', 'href' => route('kpi.summary')],
+
                     ];
                 @endphp
 
